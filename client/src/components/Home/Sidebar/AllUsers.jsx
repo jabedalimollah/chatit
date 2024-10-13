@@ -1,0 +1,58 @@
+import AllUserLoader from '../../Loader/AllUserLoader';
+import SingleUser from './SingleUser';
+
+const AllUsers = () => {
+  return (
+    <>
+      {/* <div className=""> */}
+      <h1 className="px-4 py-2 text-lg bold border-ts border-b border-gray-200 ">
+        Chats
+      </h1>
+      <div
+        className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh]`}
+        // style={{ maxHeight: 'calc(84vh - 10vh)' }}
+      >
+        {/* ===================== Loading Component ============== */}
+        {false ? (
+          <>
+            <AllUserLoader />
+            <AllUserLoader />
+            <AllUserLoader />
+            <AllUserLoader />
+            <AllUserLoader />
+          </>
+        ) : (
+          <>
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+            <SingleUser />
+          </>
+        )}
+
+        {/* <SingleUser /> */}
+        {/* <SingleUser />
+       
+        <SingleUser /> */}
+        {/* </div> */}
+      </div>
+      {/* </div> */}
+    </>
+  );
+};
+
+export default AllUsers;

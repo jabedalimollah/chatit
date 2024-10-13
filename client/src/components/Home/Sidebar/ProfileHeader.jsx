@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import { LuMenu } from 'react-icons/lu';
+import { IoMdClose } from 'react-icons/io';
+import { BiLogOut } from 'react-icons/bi';
+import MenuComponent from './MenuComponent';
+import Profile from './Profile';
+import { useDispatch, useSelector } from 'react-redux';
+import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
+const ProfileHeader = () => {
+  // const [profileBtn, setProfileBtn] = useState(false);
+  const profileBtn = useSelector((state) => state.showProfileBtn.value);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="w-full flex py-2 h-[13vh] relative">
+      {profileBtn ? (
+        <Profile />
+      ) : (
+        <div className="w-[100%] flex items-center py-3  ">
+          {/* <button className="w-[10%] mx-4 border border-black rounded-full"> */}
+          {/* <button className=" mx-4 p-2 hover:bg-gray-200 rounded-full">
+          <LuMenu className="text-2xl" />
+        </button> */}
+
+          <MenuComponent />
+          <div
+            className={`w-[70%] p-2 flex justify-center items-center gap-x-2  bg-gray-100 hover:bg-gray-200 rounded-md border border-gray-300`}
+            // onClick={() => setProfileBtn(true)}
+            onClick={() => dispatch(showProfile(true))}
+          >
+            <div className="w-[20%] rounded-full">
+              <img
+                src="./images/profile.png"
+                alt=""
+                srcSet=""
+                className="w-full rounded-full"
+              />
+            </div>
+            <div className="w-[80%]">
+              <h3>Jabed Ali</h3>
+              <p className="text-sm text-gray-600">@jabedali</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* <div className="w-[40%] flex justify-end">
+        <button className="flex justify-center items-center mx-2">
+          <BiLogOut />
+          Logout
+        </button>
+      </div> */}
+    </div>
+  );
+};
+
+export default ProfileHeader;
+{
+  /* <div className="w-full flex py-2">
+<div className="w-[60%] flex justify-between">
+  <button className="w-[20%] mx-4">
+    <LuMenu className="text-2xl" />
+  </button>
+  <div className="w-[80%]  p-2  flex justify-center items-center gap-x-2 bg-gray-100  shadow-sm shadow-black rounded-md">
+    <div className="w-[40%] rounded-full">
+      <img
+        src="./images/signup1.png"
+        alt=""
+        srcSet=""
+        className="w-full rounded-full"
+      />
+    </div>
+    <div className="w-[60%]">
+      <h3>Jabed Ali</h3>
+      <p className="text-sm text-gray-600">@jabedali</p>
+    </div>
+  </div>
+</div>
+<div className="w-[40%] flex justify-end">
+  <button className="flex justify-center items-center mx-2">
+    <BiLogOut />
+    Logout
+  </button>
+</div>
+</div> */
+}

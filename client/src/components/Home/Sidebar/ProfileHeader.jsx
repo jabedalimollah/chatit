@@ -9,6 +9,7 @@ import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice'
 const ProfileHeader = () => {
   // const [profileBtn, setProfileBtn] = useState(false);
   const profileBtn = useSelector((state) => state.showProfileBtn.value);
+  const darkMode = useSelector((state) => state.darkTheme.value);
   const dispatch = useDispatch();
 
   return (
@@ -24,7 +25,7 @@ const ProfileHeader = () => {
 
           <MenuComponent />
           <div
-            className={`w-[70%] p-2 flex justify-center items-center gap-x-2  bg-gray-100 hover:bg-gray-200 rounded-md border border-gray-300`}
+            className={`w-[70%] p-2 flex justify-center items-center gap-x-2 border ${darkMode ? 'bg-slate-900 hover:bg-slate-800 border-gray-700' : ' bg-gray-100 hover:bg-gray-200 border-gray-300 '} rounded-md  `}
             // onClick={() => setProfileBtn(true)}
             onClick={() => dispatch(showProfile(true))}
           >
@@ -38,7 +39,11 @@ const ProfileHeader = () => {
             </div>
             <div className="w-[80%]">
               <h3>Jabed Ali</h3>
-              <p className="text-sm text-gray-600">@jabedali</p>
+              <p
+                className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+              >
+                @jabedali
+              </p>
             </div>
           </div>
         </div>

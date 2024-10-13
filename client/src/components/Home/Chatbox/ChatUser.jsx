@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import ChatUserProfile from './ChatUserProfile';
 import { IoMdArrowBack } from 'react-icons/io';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showSelectedUser } from '../../../Redux/features/selectedUser/selectedUserBtnSlice';
 const ChatUser = () => {
   const [showChatUser, setShowChatUser] = useState(false);
+  const darkMode = useSelector((state) => state.darkTheme.value);
   const dispatch = useDispatch();
   const handleHideChatUser = (data) => {
     setShowChatUser(data);
@@ -15,17 +16,19 @@ const ChatUser = () => {
   };
   return (
     <>
-      <div className="h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center">
+      <div
+        className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'border-l-2 border-gray-700' : 'border-none'}`}
+      >
         {/* <div className="h-[8vh] w-full shadow-md shadow-gray-300"> */}
         <button
-          className="flex justify-center items-center md:hidden lg:hidden p-3 bg-gray-200 rounded-full ml-2 text-xl "
+          className={`flex justify-center items-center md:hidden lg:hidden p-3 ${darkMode ? 'bg-blue-950' : 'bg-gray-200'} rounded-full ml-2 text-xl `}
           onClick={handleProfileBackBtn}
           // onClick={() => dispatch(showSelectedUser(false))}
         >
           <IoMdArrowBack />
         </button>
         <div
-          className="w-[100%] md:w-[60%] lg:w-[30%] h-[80%] mx-3 flex justify-centers px-3 py-2 items-center space-x-3 bg-gray-100 hover:bg-gray-200 rounded-md border border-gray-300"
+          className={`w-[100%] md:w-[60%] lg:w-[30%] h-[80%] mx-3 flex justify-centers px-3 py-2 items-center space-x-3 border ${darkMode ? 'bg-slate-900 hover:bg-slate-800  border-gray-700' : 'bg-gray-100 hover:bg-gray-200  border-gray-300'} rounded-md `}
           onClick={() => setShowChatUser(!showChatUser)}
           // onClick={() => setShowChatUser(true)}
         >
@@ -40,7 +43,9 @@ const ChatUser = () => {
           <div>
             <h1 className="text-base">Jabed Ali Mollah</h1>
             {/* <h1 className="text-base">{selectedUser?.fullname}</h1> */}
-            <span className="text-sm text-gray-600">
+            <span
+              className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+            >
               {/* {onlineUsers.includes(selectedUser?._id) ? "online" : "offline"} */}
               Offline
             </span>

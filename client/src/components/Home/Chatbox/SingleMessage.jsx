@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux';
+
 const SingleMessage = () => {
+  const darkMode = useSelector((state) => state.darkTheme.value);
   return (
     <div>
       <div className={`chat chat-start`}>
-        <div className="chat-bubble bg-white text-black shadow-md ">
+        <div
+          className={`chat-bubble ${darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'}  shadow-md `}
+        >
           To be on the Council at your age.
           {/* {message?.message} */}
         </div>

@@ -1,11 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showSelectedUser } from '../../../Redux/features/selectedUser/selectedUserBtnSlice';
 
 const SingleUser = () => {
+  const darkMode = useSelector((state) => state.darkTheme.value);
   const dispatch = useDispatch();
   return (
     <div
-      className={`flex space-x-4 px-3 py-3 hover:bg-slate-300 rounded-md`}
+      className={`flex space-x-4 px-3 py-3 ${darkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-200'} rounded-md`}
       onClick={() => dispatch(showSelectedUser(true))}
     >
       <div className={`avatar online`}>

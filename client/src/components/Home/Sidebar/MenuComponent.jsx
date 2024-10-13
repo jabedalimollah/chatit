@@ -5,14 +5,17 @@ import { RiSettings2Line } from 'react-icons/ri';
 import { RiMoonClearLine } from 'react-icons/ri';
 import { FiInfo } from 'react-icons/fi';
 import { BiLogOut } from 'react-icons/bi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
+import { setTheme } from '../../../Redux/features/darkTheme/darkThemeSlice';
 const MenuComponent = () => {
   const [open, setOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
+  const darkMode = useSelector((state) => state.darkTheme.value);
   const btnRef = useRef(null);
   const menuRef = useRef(null);
   const dispatch = useDispatch();
+
   const menuBtn = () => {
     setOpen(!open);
   };
@@ -22,7 +25,8 @@ const MenuComponent = () => {
     dispatch(showProfile(true));
   };
   const handleDarkMode = (e) => {
-    setDarkMode(e.target.checked);
+    // setDarkMode(e.target.checked);
+    dispatch(setTheme(e.target.checked));
     // console.log(e.target.checked);
   };
   useEffect(() => {
@@ -47,7 +51,7 @@ const MenuComponent = () => {
       <div className="relative">
         <button
           ref={btnRef}
-          className=" mx-4 p-2 hover:bg-gray-200 rounded-full"
+          className={` mx-4 p-2 ${darkMode ? 'hover:bg-gray-800' : ' hover:bg-gray-200'} rounded-full`}
           onClick={menuBtn}
           //   onClick={() => setOpen(!open)}
         >
@@ -60,19 +64,27 @@ const MenuComponent = () => {
           <LuMenu className="text-2xl" />
         </button>
         {open && (
-          <div className="w-72 absolute left-8  bg-white p-2 shadow-2xl shadow-gray-400 rounded-md z-50">
+          <div
+            className={`w-72 absolute left-8 ${darkMode ? 'bg-slate-800 ' : ' bg-white shadow-gray-400'} p-2 shadow-2xl  rounded-md z-50`}
+          >
             <div
-              className="w-full p-4 border-b-2"
+              className={`w-full p-4 ${darkMode ? 'border-b-2 border-b-slate-700' : 'border-b-2'}`}
               onClick={(e) => e.stopPropagation()}
             >
               <h3 className="text-lg">Jabed Ali</h3>
-              <p className="text-sm text-gray-500">jabed@gmail.com</p>
+              <p
+                className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}
+              >
+                jabed@gmail.com
+              </p>
             </div>
-            <ul className="flex flex-col text-black py-2">
+            <ul
+              className={`flex flex-col ${darkMode ? 'text-white' : ' text-black'} py-2`}
+            >
               <li
                 ref={menuRef}
                 onClick={handleAccountBtn}
-                className="hover:bg-gray-100 flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer"
+                className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
               >
                 <RiSettings2Line className="text-sm" />
                 My Account
@@ -84,7 +96,7 @@ const MenuComponent = () => {
                   // onClick={() => setOpen(true)}
                   htmlFor="darkmode"
                   onClick={(e) => e.stopPropagation()}
-                  className="hover:bg-gray-100 flex items-center justify-between text-base px-4 py-2 rounded cursor-pointer"
+                  className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center justify-between text-base px-4 py-2 rounded cursor-pointer`}
                 >
                   <span className="flex items-center gap-x-2">
                     <RiMoonClearLine className="text-sm" />
@@ -94,7 +106,7 @@ const MenuComponent = () => {
                   <input
                     type="checkbox"
                     className={`toggle border-none bg-white ${
-                      darkMode ? '[--tglbg:#5b97fd]' : '[--tglbg:#d2d2d2]'
+                      darkMode ? '[--tglbg:#126aff]' : '[--tglbg:#d2d2d2]'
                     } hover:bg-white`}
                     checked={darkMode}
                     // className={`toggle border-blue-500 bg-white ${
@@ -109,7 +121,7 @@ const MenuComponent = () => {
               <li
                 ref={menuRef}
                 onClick={() => setOpen(false)}
-                className="hover:bg-gray-100 flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer"
+                className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
               >
                 <FiInfo className="text-sm" />
                 About
@@ -117,14 +129,14 @@ const MenuComponent = () => {
               <li
                 ref={menuRef}
                 onClick={() => setOpen(false)}
-                className="hover:bg-gray-100 flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer"
+                className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
               >
                 <BiLogOut className="text-sm" />
                 Log out
               </li>
             </ul>
             <div
-              className="w-full flex justify-center py-3 border-t-2"
+              className={`w-full flex justify-center py-3 ${darkMode ? 'border-t-2 border-t-slate-700' : 'border-t-2'}`}
               onClick={(e) => e.stopPropagation()}
             >
               <p className="text-sm">
@@ -132,7 +144,7 @@ const MenuComponent = () => {
                 <a
                   href="https://jabedalimollah.netlify.app/"
                   target="_blank"
-                  className="text-blue-700"
+                  className={`${darkMode ? 'text-blue-500' : 'text-blue-700'}`}
                 >
                   Jabed Ali Mollah
                 </a>

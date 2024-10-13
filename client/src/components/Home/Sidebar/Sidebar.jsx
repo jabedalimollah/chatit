@@ -9,10 +9,11 @@ const Sidebar = () => {
   const showSelectedUserBtn = useSelector(
     (state) => state.showSelectedBtn.value
   );
+  const darkMode = useSelector((state) => state.darkTheme.value);
   return (
     <>
       <div
-        className={`w-[100%] ${showSelectedUserBtn ? 'hidden' : 'inline-block'} md:inline-block md:w-[40%] lg:w-[24%] shadow-2xl shadow-gray-300 `}
+        className={`w-[100%] ${showSelectedUserBtn ? 'hidden' : 'inline-block'} md:inline-block md:w-[40%] lg:w-[24%] ${darkMode ? 'shadow-none ' : 'shadow-2xl  shadow-gray-300'} `}
       >
         {/* <h1 className=" px-3 pt-2">Chatit</h1> */}
         <ProfileHeader />

@@ -3,6 +3,7 @@ import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import { RiSettings2Line } from 'react-icons/ri';
 import { RiMoonClearLine } from 'react-icons/ri';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import { FiInfo } from 'react-icons/fi';
 import { BiLogOut } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,11 +62,12 @@ const MenuComponent = () => {
             <LuMenu className="text-2xl" />
           )} */}
 
+          {/* <BsThreeDotsVertical className="text-2xl" /> */}
           <LuMenu className="text-2xl" />
         </button>
         {open && (
           <div
-            className={`w-72 absolute left-8 ${darkMode ? 'bg-slate-800 ' : ' bg-white shadow-gray-400'} p-2 shadow-2xl  rounded-md z-50`}
+            className={`w-72 absolute top-11 right-8 md:left-1 lg:left-0 ${darkMode ? 'bg-slate-800 ' : ' bg-white shadow-gray-400'} p-2 shadow-2xl  rounded-md z-50`}
           >
             <div
               className={`w-full p-4 ${darkMode ? 'border-b-2 border-b-slate-700' : 'border-b-2'}`}

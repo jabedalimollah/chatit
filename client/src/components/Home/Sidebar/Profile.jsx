@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
 import { MdOutlineCameraAlt } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { FaUserEdit } from 'react-icons/fa';
+import { IoMdSettings } from 'react-icons/io';
 import ProfileView from './ProfileView';
 const Profile = () => {
   const [nameBtn, setNameBtn] = useState(false);
@@ -56,7 +58,7 @@ const Profile = () => {
               {/* Put this part before </body> tag */}
               <input type="checkbox" id="my_modal_7" className="modal-toggle" />
               <div className="modal" role="dialog">
-                <div className="modal-box w-[80%] md:w-[40%] lg:w-[25%]">
+                <div className="modal-box w-[80%] md:w-[40%] lg:w-[23%]">
                   <h3 className="text-lg font-bold my-3 text-center">
                     Select your profile picture
                   </h3>
@@ -99,6 +101,14 @@ const Profile = () => {
               </label> */}
             </div>
           </div>
+          <div className="w-full flex justify-center">
+            <div className="w-[80%] border-b border-slate-500 py-2">
+              <h3 className="flex items-center gap-x-1 text-xl text-slate-400 font-semibold">
+                <FaUserEdit /> Profile info
+              </h3>
+            </div>
+          </div>
+
           <div className="w-full flex justify-center">
             <div className="w-[80%]">
               <div className="w-full flex justify-between items-center text-blue-600 font-bold">
@@ -213,6 +223,14 @@ const Profile = () => {
               <p>jabed@gmail.com</p>
             </div>
           </div>
+          <div className="w-full flex justify-center">
+            <div className="w-[80%] border-b border-slate-500 py-2">
+              <h3 className="flex items-center gap-x-1 text-xl text-slate-400 font-semibold">
+                <IoMdSettings /> Settings
+              </h3>
+            </div>
+          </div>
+
           <div className="w-full flex justify-center ">
             <div className="w-[80%]">
               <button

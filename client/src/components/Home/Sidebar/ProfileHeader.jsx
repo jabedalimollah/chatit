@@ -17,7 +17,7 @@ const ProfileHeader = () => {
       {profileBtn ? (
         <Profile />
       ) : (
-        <div className="w-[100%] flex items-center py-3  ">
+        <div className="w-[100%] flex flex-row-reverse items-center py-3  ">
           {/* <button className="w-[10%] mx-4 border border-black rounded-full"> */}
           {/* <button className=" mx-4 p-2 hover:bg-gray-200 rounded-full">
           <LuMenu className="text-2xl" />
@@ -25,7 +25,7 @@ const ProfileHeader = () => {
 
           <MenuComponent />
           <div
-            className={`w-[70%] p-2 flex justify-center items-center gap-x-2 border ${darkMode ? 'bg-slate-900 hover:bg-slate-800 border-gray-700' : ' bg-gray-100 hover:bg-gray-200 border-gray-300 '} rounded-md  `}
+            className={` w-[75%] md:w-[70%] lg:w-[73%] p-2 flex justify-center items-center gap-x-2 border ${darkMode ? 'bg-slate-900 hover:bg-slate-800 border-gray-700' : ' bg-gray-100 hover:bg-gray-200 border-gray-300 '} rounded-md  `}
             // onClick={() => setProfileBtn(true)}
             onClick={() => dispatch(showProfile(true))}
           >

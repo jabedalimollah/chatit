@@ -5,6 +5,8 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { FaCheck } from 'react-icons/fa6';
 import { useDispatch, useSelector } from 'react-redux';
 import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
+import { MdOutlineCameraAlt } from 'react-icons/md';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 import ProfileView from './ProfileView';
 const Profile = () => {
   const [nameBtn, setNameBtn] = useState(false);
@@ -43,14 +45,58 @@ const Profile = () => {
                 className="w-full rounded-full "
                 onClick={() => handleProfileView(true)}
               />
+              {/* The button to open modal */}
               <label
+                htmlFor="my_modal_7"
+                className={`absolute right-0 bottom-5 z-10 bg-blue-600 hover:bg-blue-800 shadow ${darkMode ? 'shadow-none' : 'shadow-gray-500'} p-3 text-white rounded-full`}
+              >
+                <FaPlus />
+              </label>
+
+              {/* Put this part before </body> tag */}
+              <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+              <div className="modal" role="dialog">
+                <div className="modal-box w-[80%] md:w-[40%] lg:w-[25%]">
+                  <h3 className="text-lg font-bold my-3 text-center">
+                    Select your profile picture
+                  </h3>
+                  <ul className="w-full flex flex-col gap-y-2">
+                    <li>
+                      <label
+                        htmlFor="profilePicture"
+                        className={`flex items-center gap-x-1 text-blue-500 ${darkMode ? 'border border-slate-700 bg-slate-800 hover:bg-slate-900' : 'border border-slate-300 bg-slate-100 hover:bg-slate-200'} rounded-md p-2`}
+                      >
+                        <input
+                          type="file"
+                          name=""
+                          id="profilePicture"
+                          className="hidden"
+                        />
+                        <MdOutlineCameraAlt className="text-xl" />
+                        Upload photo
+                      </label>
+                    </li>
+                    <li>
+                      <button
+                        className={`w-full flex items-center gap-x-1 text-red-500 ${darkMode ? 'border border-slate-700 bg-slate-800 hover:bg-slate-900' : 'border border-slate-300 bg-slate-100 hover:bg-slate-200'}  rounded-md p-2`}
+                      >
+                        <RiDeleteBin6Line className="text-xl" /> Remove photo
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <label className="modal-backdrop" htmlFor="my_modal_7">
+                  Close
+                </label>
+              </div>
+              {/* <label
                 htmlFor="picture"
                 className={`absolute right-0 bottom-5 z-10 bg-blue-600 hover:bg-blue-800 shadow ${darkMode ? 'shadow-none' : 'shadow-gray-500'} p-3 text-white rounded-full`}
               >
                 <input type="file" name="" id="picture" className="hidden" />
 
                 <FaPlus />
-              </label>
+              </label> */}
             </div>
           </div>
           <div className="w-full flex justify-center">

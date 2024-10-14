@@ -6,7 +6,7 @@ const SingleUser = () => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`flex space-x-4 px-3 py-3 ${darkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-200'} rounded-md`}
+      className={`flex space-x-4 px-3 py-3 ${darkMode ? 'bg-slate-900 hover:bg-slate-700' : ' bg-white hover:bg-slate-200'} rounded-md my-2`}
       onClick={() => dispatch(showSelectedUser(true))}
     >
       <div className={`avatar online`}>

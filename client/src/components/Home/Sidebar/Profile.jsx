@@ -56,7 +56,7 @@ const Profile = () => {
               {/* Put this part before </body> tag */}
               <input type="checkbox" id="my_modal_7" className="modal-toggle" />
               <div className="modal" role="dialog">
-                <div className="modal-box w-[80%] md:w-[40%] lg:w-[25%]">
+                <div className="modal-box w-[80%] md:w-[40%] lg:w-[23%]">
                   <h3 className="text-lg font-bold my-3 text-center">
                     Select your profile picture
                   </h3>

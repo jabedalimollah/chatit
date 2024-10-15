@@ -1,16 +1,16 @@
-import { lazy } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectRoute from "./auth/ProtectRoute";
+import { lazy } from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProtectRoute from './auth/ProtectRoute';
 
 // ================ import pages =====================
-const Home = lazy(() => import("./pages/Home"));
-const Login = lazy(() => import("./pages/Login"));
-const Signup = lazy(() => import("./pages/Signup"));
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
+const Signup = lazy(() => import('./pages/Signup'));
 // const Chat = lazy(() => import("./pages/Chat"));
 // const Groups = lazy(() => import("./pages/Groups"));
 
-let user = true;
+let user = false;
 function App() {
   return (
     <>

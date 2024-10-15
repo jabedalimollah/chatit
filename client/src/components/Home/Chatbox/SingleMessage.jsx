@@ -1,9 +1,24 @@
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import smoothscroll from 'smoothscroll-polyfill';
 const SingleMessage = () => {
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const scroll = useRef();
+
+  useEffect(() => {
+    scroll.current?.scrollIntoView({ behavior: 'smooth' });
+    // setTimeout(() => {
+    //   if (scroll.current) {
+    //     window.scrollTo({
+    //       top: scroll.current.offsetTop,
+    //       behavior: 'smooth', // Smooth scrolling
+    //     });
+    //   }
+    // }, 100); // Delay to allow the DOM to fully render
+  }, []);
+
   return (
-    <div>
+    <div ref={scroll}>
       <div className={`chat chat-start`}>
         <div
           className={`chat-bubble ${darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'}  shadow-md `}

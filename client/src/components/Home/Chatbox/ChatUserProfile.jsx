@@ -12,7 +12,7 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
   return (
     <>
       <div
-        className={`w-[84%] md:w-[40%] lg:w-[24%] h-screen fixed top-0 right-0 z-10 shadow-lg ${darkMode ? 'bg-slate-950  shadow-black' : 'bg-white  shadow-gray-600'} `}
+        className={`w-[84%] md:w-[40%] lg:w-[24%] h-screen fixed top-0 right-0 z-20  shadow-lg ${darkMode ? 'bg-slate-950  shadow-black' : 'bg-white  shadow-gray-600'} `}
       >
         <div
           className={`w-full h-[8vh] ${darkMode ? 'bg-slate-900' : 'bg-gray-200'} flex items-center px-3 gap-x-3 text-lg font-bold `}

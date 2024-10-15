@@ -17,7 +17,9 @@ const ChatUser = () => {
   return (
     <>
       <div
-        className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'border-l-2 border-gray-700' : 'border-none'}`}
+        // className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'border-l-2 border-gray-700' : 'border-none'} `}
+        className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:static md:z-0 md:top-0 lg:static lg:z-0 lg:top-0`}
+        // className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:relative md:z-0 md:top-0 lg:relative lg:z-0 lg:top-0`}
       >
         {/* <div className="h-[8vh] w-full shadow-md shadow-gray-300"> */}
         <button

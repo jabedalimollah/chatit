@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getAllUserProfile,
   // deleteUserProfile,
   getUserProfile,
   login,
@@ -40,6 +41,9 @@ router.put(
 
 // ---------------- Get User Profile ------------
 router.get("/userprofile/:id", jwtAuthMiddleware, getUserProfile);
+
+// ---------------- Get All User Profile ------------
+router.get("/alluserprofile", jwtAuthMiddleware, getAllUserProfile);
 
 // ---------------- Delete User Profile ------------
 // router.delete("/deleteuser/:id", jwtAuthMiddleware, deleteUserProfile);

@@ -2,15 +2,15 @@ class ApiResponse {
   constructor(
     status,
     data,
+    message = "success",
     token = null,
-    statusInfo = "success",
-    message = "success"
+    statusInfo = "success"
   ) {
     this.status = status;
     this.data = data;
-    this.token = token;
     this.statusInfo = statusInfo;
     this.message = message;
+    this.token = token;
   }
 }
 export default ApiResponse;

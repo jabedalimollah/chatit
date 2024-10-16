@@ -33,7 +33,7 @@ const signup = asyncErrorHandler(async (req, res) => {
     // ------------- Password Remove ---------
     const userData = data.toObject();
     delete userData.password;
-    res.status(200).json(new ApiResponse(200, userData, token, "success"));
+    res.status(200).json(new ApiResponse(200, userData, "success", token));
   }
 });
 
@@ -61,7 +61,7 @@ const login = asyncErrorHandler(async (req, res) => {
   const userData = user.toObject();
   delete userData.password;
   // ------------------ response send -------------
-  res.status(200).json(new ApiResponse(200, userData, token, "success"));
+  res.status(200).json(new ApiResponse(200, userData, "success", token));
 });
 
 // =================== Reset Password ===================
@@ -95,15 +95,7 @@ const resetPassword = asyncErrorHandler(async (req, res) => {
 
   res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        null,
-        null,
-        "success",
-        "password changed successfully"
-      )
-    );
+    .json(new ApiResponse(200, null, "password changed successfully"));
 });
 
 // =================== Update User Profile ===================
@@ -135,15 +127,7 @@ const updateUserProfile = asyncErrorHandler(async (req, res) => {
   delete userData.password;
   res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        userData,
-        null,
-        "success",
-        "user details updated successfully"
-      )
-    );
+    .json(new ApiResponse(200, userData, "user details updated successfully"));
 });
 
 // =================== Delete User Profile ===================
@@ -182,15 +166,7 @@ const deleteUserProfile = asyncErrorHandler(async (req, res) => {
 
   res
     .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        null,
-        null,
-        "success",
-        "account deleted successfully"
-      )
-    );
+    .json(new ApiResponse(200, null, "account deleted successfully"));
   // res.status(200).json({
   //   status: 200,
   //   statusInfo: "success",
@@ -214,6 +190,17 @@ const getUserProfile = asyncErrorHandler(async (req, res) => {
   // res.status(200).json(new ApiResponse(200, userData));
 });
 
+// =================== Get All User Profile ===================
+const getAllUserProfile = asyncErrorHandler(async (req, res) => {
+  const loggedInUser = req.user._id;
+  const allUser = await User.find({ _id: { $ne: loggedInUser } }).select(
+    "-password"
+  );
+
+  res.status(200).json(new ApiResponse(200, allUser));
+  // res.status(200).json(allUser);
+});
+
 // =================== Export ===================
 export {
   signup,
@@ -222,4 +209,5 @@ export {
   updateUserProfile,
   // deleteUserProfile,
   getUserProfile,
+  getAllUserProfile,
 };

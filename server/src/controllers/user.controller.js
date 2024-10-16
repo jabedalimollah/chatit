@@ -4,6 +4,9 @@ import asyncErrorHandler from "../utils/asyncErrorHandler.js";
 import { generateToken } from "../middlewares/auth.middleware.js";
 import { encryPassword } from "../utils/hashPassword.js";
 import ApiResponse from "../utils/apiResponse.js";
+import Conversation from "../models/conversation.model.js";
+import Message from "../models/message.model.js";
+import mongoose from "mongoose";
 
 //=================== Sign Up ===================
 const signup = asyncErrorHandler(async (req, res) => {
@@ -159,19 +162,28 @@ const deleteUserProfile = asyncErrorHandler(async (req, res) => {
     throw new ApiError(404, "fail", "user not found");
   }
 
-  // ----------------- Delete All User Notes ----------------------
-  // const deleteAllData = await Notes.deleteMany({
-  //   author: DeleteId,
-  // });
+  // ----------------- Delete All Data ----------------------
+  const deleteAllData = await Conversation.deleteMany({
+    members: { $in: [new mongoose.Types.ObjectId(DeleteId)] },
+  });
+
+  await Message.deleteMany({
+    $or: [
+      { senderId: new mongoose.Types.ObjectId(DeleteId) },
+      { receiverId: new mongoose.Types.ObjectId(DeleteId) },
+    ],
+  });
+
+  // await Message.deleteMany({
+  //   senderId:DeleteId
+  // })
+  // await Message.deleteMany({
+  //   receiverId:DeleteId
+  // })
 
   res
     .status(200)
     .json(new ApiResponse(200, null, "account deleted successfully"));
-  // res.status(200).json({
-  //   status: 200,
-  //   statusInfo: "success",
-  //   response: "account deleted successfully",
-  // });
 });
 
 // =================== Get User Profile ===================
@@ -207,7 +219,7 @@ export {
   login,
   resetPassword,
   updateUserProfile,
-  // deleteUserProfile,
+  deleteUserProfile,
   getUserProfile,
   getAllUserProfile,
 };

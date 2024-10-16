@@ -16,10 +16,11 @@ app.use(
 app.use(bodyParser.json());
 
 // --------- Import Routes -------------
-import user from "./routes/user.routes.js";
-
+import userRoute from "./routes/user.routes.js";
+import messageRoute from "./routes/message.routes.js";
 // ----------- Routes declaration ---------
-app.use("/api/v1/user", user);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/message", messageRoute);
 
 // ----------- It is used for incorrect endpoint and wrong api requests ----------
 app.use("*", (req, res, next) => {

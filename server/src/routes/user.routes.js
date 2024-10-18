@@ -7,6 +7,8 @@ import {
   resetPassword,
   signup,
   updateUserProfile,
+  uploadProfilePicture,
+  removeProfilePicture,
 } from "../controllers/user.controller.js";
 const router = express.Router();
 import { userValidation } from "../middlewares/validation.middleware.js";
@@ -15,6 +17,7 @@ import loginSchema from "../schemas/login.schema.js";
 import { jwtAuthMiddleware } from "../middlewares/auth.middleware.js";
 import resetPasswordSchema from "../schemas/resetPassword.schema.js";
 import updateUserSchema from "../schemas/updateUser.schema.js";
+import { upload } from "../middlewares/multer.middleware.js";
 
 // =============== Router ===============
 
@@ -47,6 +50,18 @@ router.get("/alluserprofile", jwtAuthMiddleware, getAllUserProfile);
 
 // ---------------- Delete User Profile ------------
 router.delete("/deleteuser/:id", jwtAuthMiddleware, deleteUserProfile);
+
+// ---------------- Upload User Profile Picture ------------
+router.post(
+  "/uploadprofilepic",
+  jwtAuthMiddleware,
+  upload.single("profilePic"),
+  // upload.fields([{ name: "profilePic", maxCount: 1 }]),
+  uploadProfilePicture
+);
+
+// ---------------- Upload User Profile Picture ------------
+router.delete("/deleteprofilepic", jwtAuthMiddleware, removeProfilePicture);
 
 // --------------- Export Router --------------
 export default router;

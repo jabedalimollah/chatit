@@ -14,6 +14,12 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+app.use(express.static("public"));
 
 // --------- Import Routes -------------
 import userRoute from "./routes/user.routes.js";

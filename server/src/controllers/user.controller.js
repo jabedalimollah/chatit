@@ -7,6 +7,7 @@ import ApiResponse from "../utils/apiResponse.js";
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 import mongoose from "mongoose";
+import { deleteOnCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js";
 
 //=================== Sign Up ===================
 const signup = asyncErrorHandler(async (req, res) => {
@@ -162,6 +163,10 @@ const deleteUserProfile = asyncErrorHandler(async (req, res) => {
     throw new ApiError(404, "fail", "user not found");
   }
 
+  const publicId = user.profilePic.split("/").pop().split(".")[0]; //get public id from profile image url
+  // ---------------------- Delete profile image from cloudinary --------------
+  const response = await deleteOnCloudinary(publicId);
+
   // ----------------- Delete All Data ----------------------
   const deleteAllData = await Conversation.deleteMany({
     members: { $in: [new mongoose.Types.ObjectId(DeleteId)] },
@@ -173,13 +178,6 @@ const deleteUserProfile = asyncErrorHandler(async (req, res) => {
       { receiverId: new mongoose.Types.ObjectId(DeleteId) },
     ],
   });
-
-  // await Message.deleteMany({
-  //   senderId:DeleteId
-  // })
-  // await Message.deleteMany({
-  //   receiverId:DeleteId
-  // })
 
   res
     .status(200)
@@ -213,6 +211,90 @@ const getAllUserProfile = asyncErrorHandler(async (req, res) => {
   // res.status(200).json(allUser);
 });
 
+// =================== Upload Profile Picture ===================
+const uploadProfilePicture = asyncErrorHandler(async (req, res) => {
+  const loggedInUser = req.user._id;
+
+  const profileImagePath = await User.findOne({ _id: loggedInUser }); // store image old path
+
+  const profileLocalPath = req.file.path;
+
+  const profilePic = await uploadOnCloudinary(profileLocalPath);
+
+  // -------------- Update image path in mongodb -------------
+  const newResponse = await User.findByIdAndUpdate(
+    loggedInUser,
+    { profilePic: profilePic?.url || "" },
+    {
+      returnNewDocument: true,
+      new: true,
+    }
+  );
+  if (!newResponse) {
+    throw new ApiError(
+      500,
+      "fail",
+      "Something went wrong while uploading the profile picture"
+    );
+  }
+  // ---------------- Delete old image from cloudinary -----------
+  if (profileImagePath.profilePic) {
+    const publicId = profileImagePath.profilePic.split("/").pop().split(".")[0];
+    // ---------------- Delete image from cloudinary -----------
+    const response = await deleteOnCloudinary(publicId);
+  }
+
+  res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        { profilePic: newResponse.profilePic },
+        "Profile Change Successfully"
+      )
+    );
+});
+
+// ================= Remove Profile Picture ================
+const removeProfilePicture = asyncErrorHandler(async (req, res) => {
+  const userId = req.user._id;
+
+  const profileImagePath = await User.findOne({ _id: userId }); //get user data for profile image path
+
+  if (!profileImagePath.profilePic) {
+    throw new ApiError(201, "success", "Profile Change Successfully");
+
+    // ---------------- some problem this code ------------
+    // res.status(200).json(
+    //   new ApiResponse(
+    //     200,
+    //     {
+    //       profilePic: "",
+    //     },
+    //     "Profile Change Successfully"
+    //   )
+    // );
+  }
+
+  const publicId = profileImagePath.profilePic.split("/").pop().split(".")[0]; //get public id from image url
+  // ---------------------- Delete profile image from cloudinary --------------
+  const response = await deleteOnCloudinary(publicId);
+
+  await User.findByIdAndUpdate(userId, {
+    profilePic: "",
+  });
+
+  res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        profilePic: "",
+      },
+      "Profile Change Successfully"
+    )
+  );
+});
+
 // =================== Export ===================
 export {
   signup,
@@ -222,4 +304,6 @@ export {
   deleteUserProfile,
   getUserProfile,
   getAllUserProfile,
+  uploadProfilePicture,
+  removeProfilePicture,
 };

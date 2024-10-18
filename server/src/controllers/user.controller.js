@@ -104,7 +104,8 @@ const resetPassword = asyncErrorHandler(async (req, res) => {
 
 // =================== Update User Profile ===================
 const updateUserProfile = asyncErrorHandler(async (req, res) => {
-  const { id } = req.params;
+  // const { id } = req.params;
+  const id = req.user._id;
 
   // ---------------- Check username exist or not -----------------
   const existUsername =
@@ -186,7 +187,8 @@ const deleteUserProfile = asyncErrorHandler(async (req, res) => {
 
 // =================== Get User Profile ===================
 const getUserProfile = asyncErrorHandler(async (req, res) => {
-  const { id } = req.params;
+  // const { id } = req.params;
+  const id = req.user._id;
   const getUser = await User.findById({ _id: id }).select("-password");
 
   if (!getUser) {

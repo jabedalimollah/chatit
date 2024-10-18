@@ -36,14 +36,16 @@ router.put(
 
 // ------------- Update User Profile ----------
 router.put(
-  "/updateuser/:id",
+  // "/updateuser/:id",
+  "/updateuser",
   jwtAuthMiddleware,
   userValidation(updateUserSchema),
   updateUserProfile
 );
 
 // ---------------- Get User Profile ------------
-router.get("/userprofile/:id", jwtAuthMiddleware, getUserProfile);
+router.get("/userprofile", jwtAuthMiddleware, getUserProfile);
+// router.get("/userprofile/:id", jwtAuthMiddleware, getUserProfile);
 
 // ---------------- Get All User Profile ------------
 router.get("/alluserprofile", jwtAuthMiddleware, getAllUserProfile);

@@ -16,7 +16,7 @@ const Chatbox = () => {
     <>
       {!selectedUser ? (
         <div
-          className={`w-[100%] md:inline-block  md:w-[60%] lg:w-[76%] h-screen ${darkMode ? 'bg-slate-900' : 'bg-slate-100'}  ${showSelectedUserBtn ? 'inline-block' : 'hidden'} `}
+          className={`w-[100%] md:inline-block  md:w-[60%] lg:w-[76%] h-screen ${darkMode ? 'bg-slate-900' : 'bg-gray-200'}  ${showSelectedUserBtn ? 'inline-block' : 'hidden'} `}
         >
           <div className="w-[100%] h-full flex items-center justify-center">
             <div className="flex flex-col">

@@ -28,7 +28,13 @@ const MenuComponent = () => {
   };
   const handleDarkMode = (e) => {
     // setDarkMode(e.target.checked);
+    localStorage.setItem('chatit_darkmode', e.target.checked);
+    // const isDark = localStorage.getItem('chatit_darkmode');
+    // console.log(isDark);
+    // dispatch(setTheme(Boolean(isDark)));
+
     dispatch(setTheme(e.target.checked));
+
     // console.log(e.target.checked);
   };
   useEffect(() => {

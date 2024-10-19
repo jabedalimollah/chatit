@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import smoothscroll from 'smoothscroll-polyfill';
-const SingleMessage = () => {
+const SingleMessage = ({ data }) => {
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const authUser = useSelector((state) => state.user.authUser);
   const scroll = useRef();
 
   useEffect(() => {
@@ -19,26 +20,24 @@ const SingleMessage = () => {
 
   return (
     <div ref={scroll}>
-      <div className={`chat chat-start`}>
+      <div
+        className={`chat ${authUser?._id === data.senderId ? 'chat-end' : 'chat-start'}`}
+      >
         <div
-          className={`chat-bubble ${darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'}  shadow-md `}
+          className={`chat-bubble ${authUser?._id === data.senderId ? 'bg-blue-500 text-white' : darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'} shadow-md `}
         >
-          To be on the Council at your age.
+          {/* To be on the Council at your age. */}
+          {data?.message}
           {/* {message?.message} */}
         </div>
         <div className="chat-footer">08:50 PM</div>
       </div>
-      <div className={`chat chat-end`}>
+      {/* <div className={`chat chat-end`}>
         <div className="chat-bubble bg-blue-500 text-white shadow-md">
           It's never happened before.
-          {/* {message?.message} */}
+         
         </div>
         <div className="chat-footer">08:50 PM</div>
-      </div>
-      {/* <div className="chat chat-start">
-        <div className="chat-bubble chat-bubble-error">
-          It's never happened before.
-        </div>
       </div> */}
     </div>
   );

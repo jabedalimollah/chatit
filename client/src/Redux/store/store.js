@@ -3,11 +3,13 @@ import showProfileReducer from '../features/profileBtn/profileBtnSlice';
 import showSelectedUserBtnReducer from '../features/selectedUser/selectedUserBtnSlice';
 import darkThemeReducer from '../features/darkTheme/darkThemeSlice';
 import userReducer from '../features/user/userSlice';
+import messageReducer from '../features/message/messageSlice';
 export const store = configureStore({
   reducer: {
     showProfileBtn: showProfileReducer,
     showSelectedBtn: showSelectedUserBtnReducer,
     darkTheme: darkThemeReducer,
     user: userReducer,
+    message: messageReducer,
   },
 });

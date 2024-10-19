@@ -1,9 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MessageLoader from '../../Loader/MessageLoader';
 import SingleMessage from './SingleMessage';
+import { useEffect, useState } from 'react';
+import { GetSelectedUserMessages } from '../../../utils/messageApiCall';
+import { toast, ToastContainer } from 'react-toastify';
+import { setMessage } from '../../../Redux/features/message/messageSlice';
 
 const Messages = () => {
+  const [loading, setLoading] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const selectedUser = useSelector((state) => state.user.selectedUser);
+  const messages = useSelector((state) => state.message.messages);
+  const loadingMessages = useSelector((state) => state.message.loadingMessages);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -13,43 +22,26 @@ const Messages = () => {
         style={{ minHeight: 'calc(89vh - 10vh)' }}
         // style={{ minHeight: 'calc(91vh - 10vh)' }}
       >
-        {false ? (
+        {loadingMessages ? (
           <>
             <MessageLoader />
           </>
         ) : (
           <>
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
-            <SingleMessage />
+            {messages.length <= 0 ? (
+              <div className="w-full h-60  flex items-center justify-center">
+                <p className="text-2xl">Say! Hi to start the conversation</p>
+              </div>
+            ) : (
+              messages.map((item, index) => (
+                <SingleMessage key={index} data={item} />
+              ))
+            )}
+            {/* <SingleMessage /> */}
           </>
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

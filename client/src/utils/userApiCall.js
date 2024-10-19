@@ -62,4 +62,18 @@ const UpdateUserData = async (updateData, id) => {
     return { status: 'error', data: error.response?.data?.message };
   }
 };
-export { SignUpUser, LoginUser, GetUserData, UpdateUserData };
+// ==================== Get All User Data =======================
+const GetAllUserData = async () => {
+  try {
+    const response = await axios.get(
+      `${apiRoutes.getAllUserURI}`,
+
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    return await { status: 'success', data: response.data };
+  } catch (error) {
+    return { status: 'error', data: error.response?.data?.message };
+  }
+};
+export { SignUpUser, LoginUser, GetUserData, UpdateUserData, GetAllUserData };

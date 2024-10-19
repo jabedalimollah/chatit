@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const ChatUserProfile = ({ handleHideChatUser }) => {
   const [profileView, setProfileView] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const selectedUser = useSelector((state) => state.user.selectedUser);
   const handleProfileView = (data) => {
     setProfileView(data);
   };
@@ -29,7 +30,8 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
         <div className="w-full flex items-center justify-center">
           <div className="w-[60%] my-10 rounded-full relative shadow shadow-gray-700 outline outline-2 outline-blue-600">
             <img
-              src="./images/profile.png"
+              // src="./images/profile.png"
+              src={selectedUser?.profilePic || './images/default_profile.png'}
               alt="profile"
               srcSet=""
               className="w-full rounded-full "
@@ -40,15 +42,24 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
         <div className="w-full flex flex-col items-center justify-center gap-y-3">
           <div className="w-[80%] flex flex-col ">
             <span className="text-base text-blue-700 font-bold">Name</span>
-            <p className="text-lg font-semibold">Jabed Ali</p>
+            <p className="text-lg font-semibold">
+              {/* Jabed Ali */}
+              {selectedUser?.name}
+            </p>
           </div>
           <div className="w-[80%] flex flex-col ">
             <span className="text-base text-blue-700 font-bold">Username</span>
-            <p className="text-lg font-semibold">@jabedali</p>
+            <p className="text-lg font-semibold">
+              @{/* jabedali */}
+              {selectedUser?.username}
+            </p>
           </div>
           <div className="w-[80%] flex flex-col ">
-            <span className="text-base text-blue-700 font-bold">Bio</span>
-            <p className="text-lg font-semibold">Hey There I am using Chatit</p>
+            <span className="text-base text-blue-700 font-bold">About</span>
+            <p className="text-lg font-semibold">
+              {/* Hey There I am using Chatit */}
+              {selectedUser?.about}
+            </p>
           </div>
         </div>
       </div>

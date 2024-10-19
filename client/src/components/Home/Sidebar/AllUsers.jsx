@@ -1,9 +1,29 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AllUserLoader from '../../Loader/AllUserLoader';
 import SingleUser from './SingleUser';
+import { useEffect, useState } from 'react';
+import { GetAllUserData } from '../../../utils/userApiCall';
+import { setOtherUsers } from '../../../Redux/features/user/userSlice';
 
 const AllUsers = () => {
+  const [loading, setLoading] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const otherUsers = useSelector((state) => state.user.otherUsers);
+  const dispatch = useDispatch();
+  const getAllUser = async () => {
+    setLoading(true);
+    const res = await GetAllUserData();
+    setLoading(false);
+    if (res.status == 'error') {
+      dispatch(setOtherUsers([]));
+    } else {
+      dispatch(setOtherUsers(res.data.data));
+    }
+  };
+
+  useEffect(() => {
+    getAllUser();
+  }, []);
   return (
     <>
       {/* <div className=""> */}
@@ -13,11 +33,12 @@ const AllUsers = () => {
         Chats
       </h1>
       <div
-        className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}
+        className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
+        // className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}
         // style={{ maxHeight: 'calc(84vh - 10vh)' }}
       >
         {/* ===================== Loading Component ============== */}
-        {false ? (
+        {loading ? (
           <>
             <AllUserLoader />
             <AllUserLoader />
@@ -32,31 +53,13 @@ const AllUsers = () => {
           </>
         ) : (
           <>
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
-            <SingleUser />
+            {/* <SingleUser /> */}
+            {otherUsers.map((item, index) => (
+              <SingleUser data={item} key={index} />
+            ))}
           </>
         )}
 
-        {/* <SingleUser /> */}
-        {/* <SingleUser />
-       
-        <SingleUser /> */}
         {/* </div> */}
       </div>
       {/* </div> */}

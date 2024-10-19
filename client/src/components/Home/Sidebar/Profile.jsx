@@ -11,8 +11,9 @@ import { FaUserEdit } from 'react-icons/fa';
 import { IoMdSettings } from 'react-icons/io';
 import ProfileView from './ProfileView';
 import { UpdateUserData } from '../../../utils/userApiCall';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import { setAuthUser } from '../../../Redux/features/user/userSlice';
+import toast, { Toaster } from 'react-hot-toast';
 const Profile = () => {
   const [nameBtn, setNameBtn] = useState(false);
   const [usernameBtn, setUserName] = useState(false);
@@ -404,7 +405,8 @@ const Profile = () => {
         </div>
       </div>
       {profileView && <ProfileView handleProfileView={handleProfileView} />}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
+      <Toaster />
     </>
   );
 };

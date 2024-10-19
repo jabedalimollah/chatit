@@ -6,6 +6,7 @@ import { showSelectedUser } from '../../../Redux/features/selectedUser/selectedU
 const ChatUser = () => {
   const [showChatUser, setShowChatUser] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const selectedUser = useSelector((state) => state.user.selectedUser);
   const dispatch = useDispatch();
   const handleHideChatUser = (data) => {
     setShowChatUser(data);
@@ -39,11 +40,18 @@ const ChatUser = () => {
           <div className={`avatar online`}>
             <div className="w-12 rounded-full">
               {/* <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" /> */}
-              <img src="./images/profile.png" />
+              {/* <img src="./images/profile.png" /> */}
+              <img
+                src={selectedUser?.profilePic || './images/default_profile.png'}
+                alt="profile"
+              />
             </div>
           </div>
           <div>
-            <h1 className="text-base">Jabed Ali Mollah</h1>
+            <h1 className="text-base">
+              {selectedUser.name}
+              {/* Jabed Ali Mollah */}
+            </h1>
             {/* <h1 className="text-base">{selectedUser?.fullname}</h1> */}
             <span
               className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}

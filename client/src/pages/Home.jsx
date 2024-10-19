@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetUserData } from '../utils/userApiCall';
 import { setAuthUser } from '../Redux/features/user/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
+
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);

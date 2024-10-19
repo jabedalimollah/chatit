@@ -13,6 +13,7 @@ const MenuComponent = () => {
   const [open, setOpen] = useState(false);
   // const [darkMode, setDarkMode] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const authUser = useSelector((state) => state.user.authUser);
   const btnRef = useRef(null);
   const menuRef = useRef(null);
   const dispatch = useDispatch();
@@ -73,11 +74,11 @@ const MenuComponent = () => {
               className={`w-full p-4 ${darkMode ? 'border-b-2 border-b-slate-700' : 'border-b-2'}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="text-lg">Jabed Ali</h3>
+              <h3 className="text-lg">{authUser?.name}</h3>
               <p
                 className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}
               >
-                jabed@gmail.com
+                {authUser?.email}
               </p>
             </div>
             <ul

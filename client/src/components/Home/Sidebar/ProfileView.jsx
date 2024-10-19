@@ -3,6 +3,7 @@ import { IoMdArrowBack } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 const ProfileView = ({ handleProfileView }) => {
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const authUser = useSelector((state) => state.user.authUser);
   return (
     <div
       className={`w-full flex justify-center items-center h-screen fixed top-0 left-0 z-50 ${darkMode ? 'bg-slate-800' : ' bg-blue-100'} bg-opacity-85`}
@@ -18,7 +19,7 @@ const ProfileView = ({ handleProfileView }) => {
         </button>
         <div className="w-full">
           <img
-            src="./images/profile.png"
+            src={authUser?.profilePic || './images/default_profile.png'}
             alt="profile"
             srcSet=""
             className="w-full"

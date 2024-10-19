@@ -10,6 +10,7 @@ const ProfileHeader = () => {
   // const [profileBtn, setProfileBtn] = useState(false);
   const profileBtn = useSelector((state) => state.showProfileBtn.value);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const authUser = useSelector((state) => state.user.authUser);
   const dispatch = useDispatch();
 
   return (
@@ -31,18 +32,19 @@ const ProfileHeader = () => {
           >
             <div className="w-[20%] rounded-full">
               <img
-                src="./images/profile.png"
-                alt=""
+                src={authUser?.profilePic || './images/default_profile.png'}
+                alt="profile"
                 srcSet=""
                 className="w-full rounded-full"
               />
             </div>
             <div className="w-[80%]">
-              <h3>Jabed Ali</h3>
+              <h3>{authUser?.name}</h3>
+              {/* <h3>Jabed Ali</h3> */}
               <p
                 className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
               >
-                @jabedali
+                @{authUser?.username}
               </p>
             </div>
           </div>

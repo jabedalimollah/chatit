@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { IoMdSend } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { SendMessages } from '../../../utils/messageApiCall';
+import { MdOutlineEmojiEmotions } from 'react-icons/md';
+import Picker from '@emoji-mart/react';
+import data from '@emoji-mart/data';
 // import { toast, Toaster } from 'react-toastify';
 import toast, { Toaster } from 'react-hot-toast';
 import { sendMessages } from '../../../Redux/features/message/messageSlice';
@@ -9,6 +12,8 @@ import { sendMessages } from '../../../Redux/features/message/messageSlice';
 const MessageSend = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isPickerVisible, setPickerVisible] = useState(false);
+  const [currentEmoji, setCurrentEmoji] = useState(null);
   const darkMode = useSelector((state) => state.darkTheme.value);
   const selectedUser = useSelector((state) => state.user.selectedUser);
   const dispatch = useDispatch();
@@ -40,11 +45,32 @@ const MessageSend = () => {
       <div
         className={`h-[10vh] w-full flex justify-center items-center ${darkMode ? 'bg-slate-900' : 'bg-gray-200'}  `}
       >
+        {isPickerVisible && (
+          <div className="absolute bottom-20 md:bottom-32 lg:bottom-20 ">
+            <Picker
+              data={data}
+              previewPosition="none"
+              onEmojiSelect={(e) => {
+                // setCurrentEmoji(e.native);
+                setMessage(message + e.native);
+              }}
+            />
+          </div>
+        )}
         <form
           action=""
           className={`w-[90%] md:w-[80%] lg:w-[70%]  flex justify-between items-center ${darkMode ? 'bg-slate-800' : 'bg-white'} rounded-full shadow`}
         >
-          <div className="w-[90%] ml-4 mr-2 my-2 ">
+          <button
+            className={`${darkMode ? 'bg-slate-700 hover:bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-300'} rounded-full  p-2 mx-1`}
+            onClick={() => setPickerVisible(!isPickerVisible)}
+            type="button"
+          >
+            {' '}
+            <MdOutlineEmojiEmotions className="text-2xl" />
+          </button>
+
+          <div className="w-[90%] ml-0 mr-2 my-2 ">
             <input
               type="text"
               name="message"

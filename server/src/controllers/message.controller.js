@@ -53,7 +53,10 @@ const receiveMessage = asyncErrorHandler(async (req, res) => {
     members: { $all: [senderId, receiverId] },
   }).populate("messages");
   if (!conversation) {
-    return res.status(201).json([]);
+    return res
+      .status(201)
+      .json({ status: 201, data: [], message: "no messages" });
+    // res.status(201).json(new ApiResponse(201, [], "no messages"));
   }
   const messages = conversation.messages;
 

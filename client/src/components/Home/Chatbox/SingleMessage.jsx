@@ -5,7 +5,11 @@ const SingleMessage = ({ data }) => {
   const darkMode = useSelector((state) => state.darkTheme.value);
   const authUser = useSelector((state) => state.user.authUser);
   const scroll = useRef();
-
+  const createdAt = new Date(data.createdAt);
+  const formatedTime = createdAt.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
   useEffect(() => {
     scroll.current?.scrollIntoView({ behavior: 'smooth' });
     // setTimeout(() => {
@@ -30,7 +34,10 @@ const SingleMessage = ({ data }) => {
           {data?.message}
           {/* {message?.message} */}
         </div>
-        <div className="chat-footer">08:50 PM</div>
+        <div className="chat-footer">
+          {/* 08:50 PM */}
+          {formatedTime}
+        </div>
       </div>
       {/* <div className={`chat chat-end`}>
         <div className="chat-bubble bg-blue-500 text-white shadow-md">

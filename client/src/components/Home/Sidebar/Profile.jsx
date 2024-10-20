@@ -14,6 +14,7 @@ import { UpdateUserData } from '../../../utils/userApiCall';
 // import { ToastContainer, toast } from 'react-toastify';
 import { setAuthUser } from '../../../Redux/features/user/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
+import { NavLink } from 'react-router-dom';
 const Profile = () => {
   const [nameBtn, setNameBtn] = useState(false);
   const [usernameBtn, setUserName] = useState(false);
@@ -385,12 +386,13 @@ const Profile = () => {
           </div>
 
           <div className="w-full flex justify-center ">
-            <div className="w-[80%]">
-              <button
-                className={`bg-blue-700  shadow-md  ${darkMode ? 'shadow-none hover:bg-blue-900' : 'shadow-gray-300 hover:bg-blue-800'} text-white px-3 py-2 rounded-md w-full `}
+            <div className="w-[80%] flex">
+              <NavLink
+                to={'/change_password'}
+                className={`w-full bg-blue-700  shadow-md  ${darkMode ? 'shadow-none hover:bg-blue-900' : 'shadow-gray-300 hover:bg-blue-800'} text-white px-3 py-2 text-center  rounded-md w-full `}
               >
                 Change password
-              </button>
+              </NavLink>
             </div>
           </div>
           <div className="w-full flex justify-center pb-5">
@@ -406,6 +408,7 @@ const Profile = () => {
       </div>
       {profileView && <ProfileView handleProfileView={handleProfileView} />}
       {/* <ToastContainer /> */}
+
       <Toaster />
     </>
   );

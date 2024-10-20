@@ -62,6 +62,20 @@ const UpdateUserData = async (updateData, id) => {
     return { status: 'error', data: error.response?.data?.message };
   }
 };
+// ==================== Reset User Password  =======================
+const ResetUserPassword = async (updateData, id) => {
+  try {
+    const response = await axios.put(
+      `${apiRoutes.resetpasswordURI}/${id}`,
+      updateData,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    return await { status: 'success', data: response.data };
+  } catch (error) {
+    return { status: 'error', data: error.response?.data?.message };
+  }
+};
 // ==================== Get All User Data =======================
 const GetAllUserData = async () => {
   try {
@@ -76,4 +90,11 @@ const GetAllUserData = async () => {
     return { status: 'error', data: error.response?.data?.message };
   }
 };
-export { SignUpUser, LoginUser, GetUserData, UpdateUserData, GetAllUserData };
+export {
+  SignUpUser,
+  LoginUser,
+  GetUserData,
+  UpdateUserData,
+  ResetUserPassword,
+  GetAllUserData,
+};

@@ -32,6 +32,11 @@ const AllUsers = () => {
       >
         Chats
       </h1>
+      {otherUsers.length == 0 && (
+        <div className="w-full h-36 flex justify-center items-center ">
+          <p>No user found</p>
+        </div>
+      )}
       <div
         className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
         // className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}

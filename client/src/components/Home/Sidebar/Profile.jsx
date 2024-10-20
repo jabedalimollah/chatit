@@ -156,7 +156,7 @@ const Profile = () => {
         className={`w-full absolute h-dvh z-50 top-0 left-0 ${darkMode ? 'bg-slate-950' : 'bg-white'}`}
       >
         <div
-          className={`w-full h-[8vh] ${darkMode ? 'bg-slate-900' : 'bg-gray-200'} flex items-center px-5 gap-x-5 text-lg font-bold`}
+          className={`w-full h-[8vh] ${darkMode ? 'bg-slate-800' : 'bg-gray-100'} flex items-center px-5 gap-x-5 text-lg font-bold`}
         >
           <button
             className={` ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300'} p-3 rounded-full`}

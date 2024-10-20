@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoCloseSharp } from 'react-icons/io5';
+import { setOtherUsers } from '../../../Redux/features/user/userSlice';
 const Search = () => {
   const [search, setSearch] = useState('');
+  const [data, setData] = useState([]);
   const darkMode = useSelector((state) => state.darkTheme.value);
+  const otherUsers = useSelector((state) => state.user.otherUsers);
+  const dispatch = useDispatch();
+  const handleSearchInput = (e) => {
+    setSearch(e.target.value);
+    // console.log(otherUsers);
+    let newData = [];
+    newData = data.filter((item) => {
+      return (
+        !(
+          item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) === -1
+        ) ||
+        !(item.name.toLowerCase().indexOf(e.target.value.toLowerCase()) === -1)
+      );
+    });
+    dispatch(setOtherUsers(newData));
+    if (!e.target.value.length) {
+      dispatch(setOtherUsers(data));
+    }
+    // console.log(e.target.value);
+  };
   const handleCancelSearchBtn = () => {
     setSearch('');
+    dispatch(setOtherUsers(data));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;
     // console.log(allUsers);
   };
+  useEffect(() => {
+    setData(otherUsers);
+  }, []);
   return (
     <>
       <div className="w-full h-[6vh] md:h-[4vh] lg:h-[6vh] flex justify-center">
@@ -41,7 +67,7 @@ const Search = () => {
             // className="grow outline-none bg-transparent py-2 px-2"
             placeholder="Search people"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearchInput}
           />
           {search.length ? (
             <button

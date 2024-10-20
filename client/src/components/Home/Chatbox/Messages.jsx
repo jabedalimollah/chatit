@@ -30,7 +30,9 @@ const Messages = () => {
           <>
             {messages.length <= 0 ? (
               <div className="w-full h-60  flex items-center justify-center">
-                <p className="text-2xl">Say! Hi to start the conversation</p>
+                <p className="text-base md:text-xl lg:text-2xl">
+                  Say! Hi to start the conversation
+                </p>
               </div>
             ) : (
               messages.map((item, index) => (

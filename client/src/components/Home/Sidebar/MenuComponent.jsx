@@ -9,6 +9,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
 import { setTheme } from '../../../Redux/features/darkTheme/darkThemeSlice';
+import { useNavigate } from 'react-router-dom';
 const MenuComponent = () => {
   const [open, setOpen] = useState(false);
   // const [darkMode, setDarkMode] = useState(false);
@@ -17,7 +18,7 @@ const MenuComponent = () => {
   const btnRef = useRef(null);
   const menuRef = useRef(null);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const menuBtn = () => {
     setOpen(!open);
   };
@@ -36,6 +37,15 @@ const MenuComponent = () => {
     dispatch(setTheme(e.target.checked));
 
     // console.log(e.target.checked);
+  };
+  const handleLogOutBtn = () => {
+    setOpen(false);
+    document.getElementById('my_modal_1').showModal();
+  };
+  const handleLogOutConfirmBtn = () => {
+    localStorage.removeItem('chatit');
+    localStorage.removeItem('chatit_darkmode');
+    navigate('/login');
   };
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -137,7 +147,7 @@ const MenuComponent = () => {
               </li>
               <li
                 ref={menuRef}
-                onClick={() => setOpen(false)}
+                onClick={handleLogOutBtn}
                 className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
               >
                 <BiLogOut className="text-sm" />
@@ -166,6 +176,20 @@ const MenuComponent = () => {
           </div>
         )}
       </div>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <h3 className="font-semibold text-lg">Log out?</h3>
+          <p className="py-4">Are you sure you want to log out?</p>
+
+          <div className="modal-action w-full flex justify-around">
+            <button onClick={handleLogOutConfirmBtn}>Yes</button>
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="text-blue-600">No</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </>
   );
 };

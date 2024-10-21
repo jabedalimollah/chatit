@@ -396,12 +396,13 @@ const Profile = () => {
             </div>
           </div>
           <div className="w-full flex justify-center pb-5">
-            <div className="w-[80%]">
-              <button
-                className={`bg-red-700  shadow-md  ${darkMode ? 'shadow-none hover:bg-red-900' : 'shadow-gray-300 hover:bg-red-800'} text-white px-3 py-2 rounded-md w-full `}
+            <div className="w-[80%] flex">
+              <NavLink
+                to={'/delete_account'}
+                className={`bg-red-700  shadow-md  ${darkMode ? 'shadow-none hover:bg-red-900' : 'shadow-gray-300 hover:bg-red-800'} text-white px-3 py-2 text-center rounded-md w-full `}
               >
                 Delete account
-              </button>
+              </NavLink>
             </div>
           </div>
         </div>

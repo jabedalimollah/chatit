@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from './Redux/features/darkTheme/darkThemeSlice';
 import ChangePassword from './pages/ChangePassword';
+import DeleteAccount from './pages/DeleteAccount';
 // ================ import pages =====================
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
@@ -47,6 +48,7 @@ function App() {
         <Route element={<ProtectRoute user={auth} />}>
           <Route path="/" element={<Home />} />
           <Route path="/change_password" element={<ChangePassword />} />
+          <Route path="/delete_account" element={<DeleteAccount />} />
           {/* <Route path="/chat/:chatId" element={<Chat />} />
             <Route path="/groups" element={<Groups />} /> */}
         </Route>

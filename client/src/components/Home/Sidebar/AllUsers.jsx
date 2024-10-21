@@ -14,10 +14,10 @@ const AllUsers = () => {
     setLoading(true);
     const res = await GetAllUserData();
     setLoading(false);
-    if (res.status == 'error') {
+    if (res?.status == 'error') {
       dispatch(setOtherUsers([]));
     } else {
-      dispatch(setOtherUsers(res.data.data));
+      dispatch(setOtherUsers(res?.data.data));
     }
   };
 
@@ -59,7 +59,7 @@ const AllUsers = () => {
         ) : (
           <>
             {/* <SingleUser /> */}
-            {otherUsers.map((item, index) => (
+            {otherUsers?.map((item, index) => (
               <SingleUser data={item} key={index} />
             ))}
           </>

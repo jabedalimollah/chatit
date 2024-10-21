@@ -76,6 +76,23 @@ const ResetUserPassword = async (updateData, id) => {
     return { status: 'error', data: error.response?.data?.message };
   }
 };
+// ==================== Delete User Account  =======================
+const DeleteUserAccount = async (Password, id) => {
+  try {
+    const response = await axios.delete(
+      `${apiRoutes.deleteUserProfileURI}/${id}`,
+
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        data: { password: Password },
+      }
+    );
+
+    return await { status: 'success', data: response.data };
+  } catch (error) {
+    return { status: 'error', data: error.response?.data?.message };
+  }
+};
 // ==================== Get All User Data =======================
 const GetAllUserData = async () => {
   try {
@@ -96,5 +113,6 @@ export {
   GetUserData,
   UpdateUserData,
   ResetUserPassword,
+  DeleteUserAccount,
   GetAllUserData,
 };

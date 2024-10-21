@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WrapperComponent from '../layout/WrapperComponent';
 import { IoMdEye } from 'react-icons/io';
 import { IoMdEyeOff } from 'react-icons/io';
+import { IoMdArrowBack } from 'react-icons/io';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import FilledInput from '@mui/material/FilledInput';
@@ -215,9 +216,11 @@ const ChangePassword = () => {
               <div className="w-full flex justify-between mt-4">
                 <NavLink
                   to={'/'}
-                  className={`border border-blue-500 hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md text-blue-500`}
+                  className={`flex justify-center items-center gap-x-1 border border-blue-500 hover:bg-blue-600 hover:text-white px-3 py-1 rounded-md text-blue-500`}
                 >
-                  Cancel
+                  {/* Cancel */}
+                  <IoMdArrowBack />
+                  Back
                 </NavLink>
 
                 {loading ? (
@@ -231,23 +234,10 @@ const ChangePassword = () => {
                     onClick={handleChangePassword}
                     className="bg-blue-500 text-white hover:bg-blue-600 px-3 py-1 rounded-md "
                   >
-                    {/* {true ? (
-                 <span>
-                    
-                  </span>
-                ) : ( */}
                     Change Password
-                    {/* )} */}
                   </button>
                 )}
               </div>
-
-              {/* <TextField
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-              /> */}
             </form>
           </div>
           <div className="w-[100%] md:w-[60%] lg:w-[50%] flex items-center">
@@ -260,84 +250,4 @@ const ChangePassword = () => {
   );
 };
 
-// <label htmlFor="old-password">
-// {/* <span>Old Password*</span> */}
-// <div
-//   className="w-full flexk"
-//   //   className={`border border-gray-500 rounded-md py-2 px-3`}
-// >
-//   {/* <input
-//     type="password"
-//     name=""
-//     id="old-password"
-//     placeholder="Old Password"
-//     className="outline-none border-transparent bg-transparent"
-//   /> */}
-//   <TextField
-//     id="standard-password-input"
-//     label="Password"
-//     type={oldPasswordShow ? 'text' : 'password'}
-//     autoComplete="current-password"
-//     variant="standard"
-//     className="w-full"
-//   />
-//   <button
-//     type="button"
-//     className="p-3 "
-//     onClick={() => setOldPasswordShow(!oldPasswordShow)}
-//   >
-//     {oldPasswordShow ? <IoMdEye /> : <IoMdEyeOff />}
-//   </button>
-// </div>
-// </label>
-// <label htmlFor="standard-new-password-input">
-// <div className="w-full">
-//   <TextField
-//     id="standard-new-password-input"
-//     label="New Password"
-//     type="password"
-//     autoComplete="new-password"
-//     variant="standard"
-//     className="w-full"
-//   />
-// </div>
-// </label>
-// <label htmlFor="standard-confirmpassword-input">
-// <div className="w-full">
-//   <TextField
-//     id="standard-confirmpassword-input"
-//     label="Confirm Password"
-//     type="password"
-//     autoComplete="confirm-password"
-//     variant="standard"
-//     className="w-full"
-//   />
-// </div>
-// </label>
-{
-  /* <label htmlFor="new-password">
-<span>New Password</span>
-<div className={`border border-gray-500 rounded-md py-2 px-3`}>
-  <input
-    type="password"
-    name=""
-    id="new-password"
-    placeholder="New Password"
-    className="outline-none border-transparent bg-transparent"
-  />
-</div>
-</label>
-<label htmlFor="confirm-password">
-<span>Confirm New Password</span>
-<div className={`border border-gray-500 rounded-md py-2 px-3`}>
-  <input
-    type="password"
-    name=""
-    id="confirm-password"
-    placeholder="Confirm New Password"
-    className="outline-none border-transparent bg-transparent"
-  />
-</div>
-</label> */
-}
 export default WrapperComponent()(ChangePassword);

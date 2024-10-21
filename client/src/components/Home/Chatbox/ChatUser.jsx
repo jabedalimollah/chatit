@@ -3,10 +3,13 @@ import ChatUserProfile from './ChatUserProfile';
 import { IoMdArrowBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { showSelectedUser } from '../../../Redux/features/selectedUser/selectedUserBtnSlice';
+import { useSocketContext } from '../../../context/SocketContext';
 const ChatUser = () => {
   const [showChatUser, setShowChatUser] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
   const selectedUser = useSelector((state) => state.user.selectedUser);
+  const { socket, onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(selectedUser._id);
   const dispatch = useDispatch();
   const handleHideChatUser = (data) => {
     setShowChatUser(data);
@@ -37,7 +40,7 @@ const ChatUser = () => {
         >
           {/* <div className="h-[8vh] flex justify-centers px-3 py-2 items-center space-x-3 bg-blue-100 "> */}
 
-          <div className={`avatar online`}>
+          <div className={`avatar ${isOnline && 'online'}`}>
             <div className="w-12 rounded-full">
               {/* <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" /> */}
               {/* <img src="./images/profile.png" /> */}
@@ -57,7 +60,9 @@ const ChatUser = () => {
               className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
             >
               {/* {onlineUsers.includes(selectedUser?._id) ? "online" : "offline"} */}
-              Offline
+
+              {isOnline ? 'Online' : 'Offline'}
+              {/* Offline */}
             </span>
           </div>
         </div>

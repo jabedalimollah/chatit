@@ -4,8 +4,12 @@ import SingleMessage from './SingleMessage';
 import { useEffect, useState } from 'react';
 import { GetSelectedUserMessages } from '../../../utils/messageApiCall';
 import { toast, ToastContainer } from 'react-toastify';
-import { setMessage } from '../../../Redux/features/message/messageSlice';
-
+import {
+  setLoadingMessages,
+  setMessage,
+} from '../../../Redux/features/message/messageSlice';
+import { useGetSocketMessage } from '../../../context/useGetSocketMessage';
+// import useGetSocketMessage from '../../../context/useGetSocketMessage';
 const Messages = () => {
   const [loading, setLoading] = useState(false);
   const darkMode = useSelector((state) => state.darkTheme.value);
@@ -13,7 +17,26 @@ const Messages = () => {
   const messages = useSelector((state) => state.message.messages);
   const loadingMessages = useSelector((state) => state.message.loadingMessages);
   const dispatch = useDispatch();
+  useGetSocketMessage();
 
+  const getUserMessage = async () => {
+    // setLoading(true);
+    // const res = await GetSelectedUserMessages('6708a08103f2615b13f08904');
+    dispatch(setLoadingMessages(true));
+    const res = await GetSelectedUserMessages(selectedUser?._id);
+    // setLoading(false)
+    dispatch(setLoadingMessages(false));
+    if (res.status == 'error') {
+      toast.error(res.data, {
+        position: 'top-center',
+      });
+    } else {
+      dispatch(setMessage(res.data.data));
+    }
+  };
+  useEffect(() => {
+    getUserMessage();
+  }, [selectedUser]);
   return (
     <>
       {/* <div className="" style={{ minHeight: "calc(91vh - 8vh)" }}> */}
@@ -35,9 +58,12 @@ const Messages = () => {
                 </p>
               </div>
             ) : (
-              messages.map((item, index) => (
-                <SingleMessage key={index} data={item} />
-              ))
+              messages.map((item, index) =>
+                selectedUser?._id === item?.senderId ||
+                selectedUser?._id === item?.receiverId ? (
+                  <SingleMessage key={index} data={item} />
+                ) : null
+              )
             )}
             {/* <SingleMessage /> */}
           </>

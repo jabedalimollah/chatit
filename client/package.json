@@ -29,6 +29,7 @@
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.6",
     "smoothscroll-polyfill": "^0.4.4",
+    "socket.io-client": "^4.8.0",
     "styled-components": "^6.1.13",
     "yup": "^1.4.0"
   },

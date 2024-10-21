@@ -51,6 +51,7 @@ const Signup = () => {
           navigate('/'); // navigate home page
 
           dispatch(setAuthUser(res.data.data)); // set Auth User when log in
+          window.location.reload();
         }
       },
     });

@@ -9,17 +9,18 @@ import { MdOutlineCameraAlt } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FaUserEdit } from 'react-icons/fa';
 import { IoMdSettings } from 'react-icons/io';
-import ProfileView from './ProfileView';
+// import ProfileView from './ProfileView';
 import { UpdateUserData } from '../../../utils/userApiCall';
 // import { ToastContainer, toast } from 'react-toastify';
 import { setAuthUser } from '../../../Redux/features/user/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import { NavLink } from 'react-router-dom';
+import ProfilePicture from './ProfilePicture';
 const Profile = () => {
   const [nameBtn, setNameBtn] = useState(false);
   const [usernameBtn, setUserName] = useState(false);
   const [bioBtn, setBioBtn] = useState(false);
-  const [profileView, setProfileView] = useState(false);
+  // const [profileView, setProfileView] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: '',
@@ -34,9 +35,9 @@ const Profile = () => {
   const darkMode = useSelector((state) => state.darkTheme.value);
   const authUser = useSelector((state) => state.user.authUser);
   const dispatch = useDispatch();
-  const handleProfileView = (data) => {
-    setProfileView(data);
-  };
+  // const handleProfileView = (data) => {
+  //   setProfileView(data);
+  // };
   const handleInputChange = (e) => {
     // ------------- Edit Name ---------
     if (e.target.name === 'name') {
@@ -169,69 +170,7 @@ const Profile = () => {
           <p className="">Profile</p>
         </div>
         <div className="h-[92vh] w-full flex flex-col gap-y-4 overflow-y-auto py-3">
-          <div className="w-full flex items-center justify-center">
-            <div className="w-[60%] my-10 rounded-full relative shadow shadow-gray-700 outline outline-2 outline-blue-600">
-              <img
-                src={authUser?.profilePic || './images/default_profile.png'}
-                alt="profile"
-                srcSet=""
-                className="w-full rounded-full "
-                onClick={() => handleProfileView(true)}
-              />
-              {/* The button to open modal */}
-              <label
-                htmlFor="my_modal_7"
-                className={`absolute right-0 bottom-5 z-10 bg-blue-600 hover:bg-blue-800 shadow ${darkMode ? 'shadow-none' : 'shadow-gray-500'} p-3 text-white rounded-full`}
-              >
-                <FaPlus />
-              </label>
-
-              {/* Put this part before </body> tag */}
-              <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-              <div className="modal" role="dialog">
-                <div className="modal-box w-[80%] md:w-[40%] lg:w-[23%]">
-                  <h3 className="text-lg font-bold my-3 text-center">
-                    Select your profile picture
-                  </h3>
-                  <ul className="w-full flex flex-col gap-y-2">
-                    <li>
-                      <label
-                        htmlFor="profilePicture"
-                        className={`flex items-center gap-x-1 text-blue-500 ${darkMode ? 'border border-slate-700 bg-slate-800 hover:bg-slate-900' : 'border border-slate-300 bg-slate-100 hover:bg-slate-200'} rounded-md p-2`}
-                      >
-                        <input
-                          type="file"
-                          name=""
-                          id="profilePicture"
-                          className="hidden"
-                        />
-                        <MdOutlineCameraAlt className="text-xl" />
-                        Upload photo
-                      </label>
-                    </li>
-                    <li>
-                      <button
-                        className={`w-full flex items-center gap-x-1 text-red-500 ${darkMode ? 'border border-slate-700 bg-slate-800 hover:bg-slate-900' : 'border border-slate-300 bg-slate-100 hover:bg-slate-200'}  rounded-md p-2`}
-                      >
-                        <RiDeleteBin6Line className="text-xl" /> Remove photo
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-                <label className="modal-backdrop" htmlFor="my_modal_7">
-                  Close
-                </label>
-              </div>
-              {/* <label
-                htmlFor="picture"
-                className={`absolute right-0 bottom-5 z-10 bg-blue-600 hover:bg-blue-800 shadow ${darkMode ? 'shadow-none' : 'shadow-gray-500'} p-3 text-white rounded-full`}
-              >
-                <input type="file" name="" id="picture" className="hidden" />
-
-                <FaPlus />
-              </label> */}
-            </div>
-          </div>
+          <ProfilePicture authUser={authUser} />
           <div className="w-full flex justify-center">
             <div className="w-[80%] border-b border-slate-500 py-2">
               <h3 className="flex items-center gap-x-1 text-xl text-slate-400 font-semibold">
@@ -407,7 +346,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      {profileView && <ProfileView handleProfileView={handleProfileView} />}
+      {/* {profileView && <ProfileView handleProfileView={handleProfileView} />} */}
       {/* <ToastContainer /> */}
 
       <Toaster />

@@ -63,7 +63,12 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
           </div>
         </div>
       </div>
-      {profileView && <ProfileView handleProfileView={handleProfileView} />}
+      {profileView && (
+        <ProfileView
+          handleProfileView={handleProfileView}
+          profileImage={selectedUser}
+        />
+      )}
     </>
   );
 };

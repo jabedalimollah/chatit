@@ -62,6 +62,43 @@ const UpdateUserData = async (updateData, id) => {
     return { status: 'error', data: error.response?.data?.message };
   }
 };
+// ==================== Change Profile Picture =======================
+const ChangeProfilePicture = async (profilePicture) => {
+  try {
+    const response = await axios.post(
+      `${apiRoutes.changeProfileImageURI}`,
+      profilePicture,
+      {
+        headers: {
+          // 'Content-Type': 'multipart/form-data', // Use for file uploads
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return await { status: 'success', data: response.data };
+  } catch (error) {
+    // console.log(error);
+    // localStorage.removeItem('chatit');
+    return { status: 'error', data: error.response?.data?.message };
+  }
+};
+// ==================== Delete Profile Picture =======================
+const DeleteProfilePicture = async () => {
+  try {
+    const response = await axios.delete(
+      `${apiRoutes.deleteProfileImageURI}`,
+
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    return await { status: 'success', data: response.data };
+  } catch (error) {
+    // console.log(error);
+    // localStorage.removeItem('chatit');
+    return { status: 'error', data: error.response?.data?.message };
+  }
+};
 // ==================== Reset User Password  =======================
 const ResetUserPassword = async (updateData, id) => {
   try {
@@ -112,6 +149,8 @@ export {
   LoginUser,
   GetUserData,
   UpdateUserData,
+  ChangeProfilePicture,
+  DeleteProfilePicture,
   ResetUserPassword,
   DeleteUserAccount,
   GetAllUserData,

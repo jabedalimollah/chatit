@@ -30,13 +30,28 @@ const ProfileHeader = () => {
             // onClick={() => setProfileBtn(true)}
             onClick={() => dispatch(showProfile(true))}
           >
-            <div className="w-[20%] rounded-full">
+            <div
+              className="w-[20%] h-12 md:h-10 lg:h-12 rounded-full"
+              style={{
+                backgroundImage: `url(${authUser?.profilePic || './images/default_profile.png'})`,
+                backgroundSize: 'cover', // Cover the entire container
+                backgroundPosition: 'center', // Center the image
+                backgroundRepeat: 'no-repeat', // Prevent tiling
+              }}
+            >
+              {/* <img
+                src={authUser?.profilePic || './images/default_profile.png'}
+                alt="profile"
+                srcSet=""
+                className="w-full rounded-full"
+              /> */}
+              {/* <div className="w-[20%] rounded-full">
               <img
                 src={authUser?.profilePic || './images/default_profile.png'}
                 alt="profile"
                 srcSet=""
                 className="w-full rounded-full"
-              />
+              /> */}
             </div>
             <div className="w-[80%]">
               <h3>{authUser?.name}</h3>

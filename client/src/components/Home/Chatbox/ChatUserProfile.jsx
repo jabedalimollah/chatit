@@ -28,15 +28,28 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
           <p className="">Profile</p>
         </div>
         <div className="w-full flex items-center justify-center">
-          <div className="w-[60%] my-10 rounded-full relative shadow shadow-gray-700 outline outline-2 outline-blue-600">
-            <img
-              // src="./images/profile.png"
+          <div className="sw-[60%]  w-52 h-52 my-10 rounded-full overflow-hidden relatives shadow shadow-gray-700 outline outline-2 outline-blue-600">
+            <div
+              className="w-full h-full rounded-fulls"
+              style={{
+                backgroundImage: `url(${selectedUser?.profilePic || './images/default_profile.png'})`,
+                backgroundSize: 'cover', // Cover the entire container
+                backgroundPosition: 'center', // Center the image
+                backgroundRepeat: 'no-repeat', // Prevent tiling
+                minHeight: '100%', // Ensures proper height
+                minWidth: '100%',
+                transform: 'scale(1.1)',
+              }}
+              onClick={() => handleProfileView(true)}
+            ></div>
+            {/* <img
+            
               src={selectedUser?.profilePic || './images/default_profile.png'}
               alt="profile"
               srcSet=""
               className="w-full rounded-full "
               onClick={() => handleProfileView(true)}
-            />
+            /> */}
           </div>
         </div>
         <div className="w-full flex flex-col items-center justify-center gap-y-3">

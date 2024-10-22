@@ -86,14 +86,23 @@ const ProfilePicture = ({ authUser }) => {
   return (
     <>
       <div className="w-full flex items-center justify-center">
-        <div className="w-[60%] my-10 rounded-full relative shadow shadow-gray-700 outline outline-2 outline-blue-600">
-          <img
+        <div className="sw-[60%] sh-[60%] w-48 h-48 my-10 rounded-full relative shadow shadow-gray-700 outline outline-2 outline-blue-600">
+          <div
+            className="w-full h-full rounded-full "
+            style={{
+              backgroundImage: `url(${authUser?.profilePic || './images/default_profile.png'})`,
+              backgroundSize: 'cover', // Cover the entire container
+              backgroundPosition: 'center', // Center the image
+              backgroundRepeat: 'no-repeat', // Prevent tiling
+            }}
+            onClick={() => handleProfileView(true)}
+          ></div>
+          {/* <img
             src={authUser?.profilePic || './images/default_profile.png'}
             alt="profile"
-            // srcSet=""
-            className="w-full rounded-full "
+            className="w-full h-full rounded-full "
             onClick={() => handleProfileView(true)}
-          />
+          /> */}
           {/* The button to open modal */}
           <label
             htmlFor="my_modal_7"

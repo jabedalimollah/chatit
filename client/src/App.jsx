@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from './Redux/features/darkTheme/darkThemeSlice';
 import ChangePassword from './pages/ChangePassword';
 import DeleteAccount from './pages/DeleteAccount';
+import About from './pages/About';
 // ================ import pages =====================
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
@@ -49,6 +50,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/change_password" element={<ChangePassword />} />
           <Route path="/delete_account" element={<DeleteAccount />} />
+          <Route path="/about" element={<About />} />
           {/* <Route path="/chat/:chatId" element={<Chat />} />
             <Route path="/groups" element={<Groups />} /> */}
         </Route>

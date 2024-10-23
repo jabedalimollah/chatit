@@ -1,6 +1,6 @@
-import React from "react";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import React from 'react';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../components/Footer/Footer';
 
 const WrapperComponent = () => (WrappedComponent) => {
   return (props) => {
@@ -14,4 +14,4 @@ const WrapperComponent = () => (WrappedComponent) => {
   };
 };
 
-export default WrapperComponent;
+export { WrapperComponent };

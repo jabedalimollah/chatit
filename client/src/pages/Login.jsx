@@ -14,7 +14,7 @@ import { IoEyeSharp } from 'react-icons/io5';
 import { IoEyeOffSharp } from 'react-icons/io5';
 import { useFormik } from 'formik';
 import { loginSchema } from '../schemas/loginSchema';
-import WrapperComponent from '../layout/WrapperComponent';
+import { WrapperComponent } from '../layout/WrapperComponent';
 import { ToastContainer, toast } from 'react-toastify';
 import { LoginUser } from '../utils/userApiCall';
 import { useDispatch } from 'react-redux';

@@ -12,7 +12,7 @@ import { IoEyeSharp } from 'react-icons/io5';
 import { IoEyeOffSharp } from 'react-icons/io5';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../schemas/signUpSchema';
-import WrapperComponent from '../layout/WrapperComponent';
+import { WrapperComponent } from '../layout/WrapperComponent';
 import { SignUpUser } from '../utils/userApiCall';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';

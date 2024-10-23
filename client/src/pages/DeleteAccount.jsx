@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import WrapperComponent from '../layout/WrapperComponent';
+import { WrapperComponent } from '../layout/WrapperComponent';
 import { IoMdEye } from 'react-icons/io';
 import { IoMdEyeOff } from 'react-icons/io';
 import { IoMdArrowBack } from 'react-icons/io';

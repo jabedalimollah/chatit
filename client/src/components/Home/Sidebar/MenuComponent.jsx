@@ -9,7 +9,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { showProfile } from '../../../Redux/features/profileBtn/profileBtnSlice';
 import { setTheme } from '../../../Redux/features/darkTheme/darkThemeSlice';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 const MenuComponent = () => {
   const [open, setOpen] = useState(false);
   // const [darkMode, setDarkMode] = useState(false);
@@ -137,13 +137,16 @@ const MenuComponent = () => {
                   />
                 </label>
               </li>
-              <li
-                ref={menuRef}
-                onClick={() => setOpen(false)}
-                className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
-              >
-                <FiInfo className="text-sm" />
-                About
+              <li>
+                <NavLink
+                  to={'/about'}
+                  ref={menuRef}
+                  onClick={() => setOpen(false)}
+                  className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center gap-x-2 text-base px-4 py-2 rounded cursor-pointer`}
+                >
+                  <FiInfo className="text-sm" />
+                  About
+                </NavLink>
               </li>
               <li
                 ref={menuRef}

@@ -11,6 +11,8 @@ const apiRoutes = {
 
   selectedUserMessages: `${import.meta.env.VITE_APP_API_KEY}/message/receive`,
   sendMessages: `${import.meta.env.VITE_APP_API_KEY}/message/send`,
+
+  aiURI: `${import.meta.env.VITE_APP_API_KEY}/ai/ask`,
 };
 
 export { apiRoutes };

@@ -4,6 +4,7 @@ import SingleUser from './SingleUser';
 import { useEffect, useState } from 'react';
 import { GetAllUserData } from '../../../utils/userApiCall';
 import { setOtherUsers } from '../../../Redux/features/user/userSlice';
+import AIButton from '../Ai/AIButton';
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -59,6 +60,7 @@ const AllUsers = () => {
         ) : (
           <>
             {/* <SingleUser /> */}
+            <AIButton />
             {otherUsers?.map((item, index) => (
               <SingleUser data={item} key={index} />
             ))}

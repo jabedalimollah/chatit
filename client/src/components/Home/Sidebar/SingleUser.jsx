@@ -10,6 +10,7 @@ import {
   setMessage,
 } from '../../../Redux/features/message/messageSlice';
 import { useEffect, useState } from 'react';
+import { setSelectAi } from '../../../Redux/features/Ai/aiSlice';
 // import { useGetSocketMessage } from '../../../context/useGetSocketMessage';
 
 const SingleUser = ({ data }) => {
@@ -23,6 +24,7 @@ const SingleUser = ({ data }) => {
   const handleSelectedUser = async () => {
     dispatch(showSelectedUser(true));
     dispatch(setSelectedUsers(data));
+    dispatch(setSelectAi(false));
     // await getUserMessage();
   };
   const getUserMessage = async () => {

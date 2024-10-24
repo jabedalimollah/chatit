@@ -3,6 +3,7 @@ import ChatUser from './ChatUser';
 import Messages from './Messages';
 import MessageSend from './MessageSend';
 import { useSelector } from 'react-redux';
+import AiMessageBox from '../Ai/AiMessageBox';
 
 const Chatbox = () => {
   const showSelectedUserBtn = useSelector(
@@ -11,10 +12,13 @@ const Chatbox = () => {
   const darkMode = useSelector((state) => state.darkTheme.value);
   const authUser = useSelector((state) => state.user.authUser);
   const selectedUser = useSelector((state) => state.user.selectedUser);
+  const selectAi = useSelector((state) => state.ai.selectAi);
 
   return (
     <>
-      {!selectedUser ? (
+      {selectAi ? (
+        <AiMessageBox />
+      ) : !selectedUser ? (
         <div
           className={`w-[100%] md:inline-block  md:w-[60%] lg:w-[76%] h-screen ${darkMode ? 'bg-slate-900' : 'bg-gray-200'}  ${showSelectedUserBtn ? 'inline-block' : 'hidden'} `}
         >

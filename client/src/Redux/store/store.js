@@ -4,6 +4,7 @@ import showSelectedUserBtnReducer from '../features/selectedUser/selectedUserBtn
 import darkThemeReducer from '../features/darkTheme/darkThemeSlice';
 import userReducer from '../features/user/userSlice';
 import messageReducer from '../features/message/messageSlice';
+import aiReducer from '../features/Ai/aiSlice';
 export const store = configureStore({
   reducer: {
     showProfileBtn: showProfileReducer,
@@ -11,5 +12,6 @@ export const store = configureStore({
     darkTheme: darkThemeReducer,
     user: userReducer,
     message: messageReducer,
+    ai: aiReducer,
   },
 });

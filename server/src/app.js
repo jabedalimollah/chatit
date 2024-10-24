@@ -55,9 +55,11 @@ app.use(express.static("public"));
 // --------- Import Routes -------------
 import userRoute from "./routes/user.routes.js";
 import messageRoute from "./routes/message.routes.js";
+import aiRoute from "./routes/googleGemini.routes.js";
 // ----------- Routes declaration ---------
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
+app.use("/api/v1/ai", aiRoute);
 
 // ----------- It is used for incorrect endpoint and wrong api requests ----------
 app.use("*", (req, res, next) => {

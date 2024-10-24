@@ -3,7 +3,7 @@ import MessageLoader from '../../Loader/MessageLoader';
 import SingleMessage from './SingleMessage';
 import { useEffect, useState } from 'react';
 import { GetSelectedUserMessages } from '../../../utils/messageApiCall';
-import { toast, ToastContainer } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import {
   setLoadingMessages,
   setMessage,
@@ -69,7 +69,7 @@ const Messages = () => {
           </>
         )}
       </div>
-      <ToastContainer />
+      <Toaster />
     </>
   );
 };

@@ -1,11 +1,8 @@
 import React from 'react';
-import { FaFacebookF } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa6';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { BsTwitterX } from 'react-icons/bs';
 import { AiFillInstagram } from 'react-icons/ai';
-import { TbBrandGithubFilled } from 'react-icons/tb';
 import { TbWorld } from 'react-icons/tb';
 const Footer = () => {
   const year = new Date();
@@ -56,7 +53,6 @@ const Footer = () => {
       <div className="w-full bg-blue-950 flex justify-center py-4 border-t border-t-gray-200">
         {/* copyright©️ 2024 */}
         <p>© {year.getFullYear()} Chatit. All Rights Reserved</p>
-        {/* © 2024 Chatib.us  */}
       </div>
     </footer>
   );

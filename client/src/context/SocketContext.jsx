@@ -9,8 +9,7 @@ const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const authUser = useSelector((state) => state.user.authUser);
-  // const token = JSON.parse(localStorage.getItem('chatit'));
-  //   console.log(token.user._id);
+
   useEffect(() => {
     if (authUser) {
       // const socket = io('http://localhost:8000', {

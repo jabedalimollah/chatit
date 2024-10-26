@@ -22,7 +22,7 @@ const ChatUser = () => {
     <>
       <div
         // className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'border-l-2 border-gray-700' : 'border-none'} `}
-        className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:static md:z-0 md:top-0 lg:static lg:z-0 lg:top-0`}
+        className={`sh-[11vh] h-fit md:h-[9vh] lg:h-[11vh] w-full p-3 md:p-0 flex items-center ${darkMode ? 'bg-slate-950  border-l-0 md:border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:static md:z-0 md:top-0 lg:static lg:z-0 lg:top-0`}
         // className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:relative md:z-0 md:top-0 lg:relative lg:z-0 lg:top-0`}
       >
         {/* <div className="h-[8vh] w-full shadow-md shadow-gray-300"> */}
@@ -42,8 +42,6 @@ const ChatUser = () => {
 
           <div className={`avatar ${isOnline && 'online'}`}>
             <div className="w-12 rounded-full">
-              {/* <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" /> */}
-              {/* <img src="./images/profile.png" /> */}
               <img
                 src={selectedUser?.profilePic || './images/default_profile.png'}
                 alt="profile"
@@ -51,18 +49,14 @@ const ChatUser = () => {
             </div>
           </div>
           <div>
-            <h1 className="text-base">
-              {selectedUser.name}
-              {/* Jabed Ali Mollah */}
-            </h1>
-            {/* <h1 className="text-base">{selectedUser?.fullname}</h1> */}
+            <h1 className="text-base">{selectedUser.name}</h1>
+
             <span
               className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
             >
               {/* {onlineUsers.includes(selectedUser?._id) ? "online" : "offline"} */}
 
               {isOnline ? 'Online' : 'Offline'}
-              {/* Offline */}
             </span>
           </div>
         </div>

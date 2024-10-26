@@ -9,6 +9,15 @@ import {
 } from '../../../Redux/features/Ai/aiSlice';
 import { GetAiResult } from '../../../utils/aiApiCall';
 import toast, { Toaster } from 'react-hot-toast';
+
+// =============== For bold format ==============
+const BoldText = ({ text }) => {
+  // Replace **text** with <strong>text</strong>
+  const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  return <p dangerouslySetInnerHTML={{ __html: formattedText }} />;
+};
+
 const AiMessageBox = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,7 +43,7 @@ const AiMessageBox = () => {
     );
 
     setLoading(true);
-    // console.log(messages);
+
     const res = await GetAiResult(message);
 
     setMessage('');
@@ -59,7 +68,7 @@ const AiMessageBox = () => {
         className={`w-[100%] h-screen ${darkMode ? 'bg-slate-900' : 'bg-slate-100'} ${selectAi ? 'inline-block' : 'hidden'} md:inline-block  md:w-[60%] lg:w-[76%]`}
       >
         <div
-          className={`h-[11vh] md:h-[9vh] lg:h-[11vh] w-full  flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:static md:z-0 md:top-0 lg:static lg:z-0 lg:top-0`}
+          className={`sh-[11vh] h-fit md:h-[9vh] lg:h-[11vh] w-full p-3 md:p-0 flex items-center ${darkMode ? 'bg-slate-950 border-l-2 border-gray-700' : 'border-none bg-white'} fixed top-0 z-10  md:static md:z-0 md:top-0 lg:static lg:z-0 lg:top-0`}
         >
           <button
             className={`flex justify-center items-center md:hidden lg:hidden p-3 ${darkMode ? 'bg-blue-950' : 'bg-gray-200'} rounded-full ml-2 text-xl `}
@@ -72,11 +81,16 @@ const AiMessageBox = () => {
           >
             <div className={`avatar`}>
               <div className="w-12 rounded-full">
-                <img src={'./images/Jabed_Ali.jpg'} alt="profile" />
+                <img
+                  src={
+                    darkMode ? './images/ai_dark.jpg' : './images/ai_light.jpg'
+                  }
+                  alt="profile"
+                />
               </div>
             </div>
             <div>
-              <h1 className="text-base">Chatit Ai</h1>
+              <h1 className="text-base">Chatit AI</h1>
 
               <span
                 className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
@@ -94,9 +108,16 @@ const AiMessageBox = () => {
             // style={{ minHeight: 'calc(91vh - 10vh)' }}
           >
             {messages.length <= 0 ? (
-              <div className="w-full h-60  flex flex-col items-center justify-center">
-                <p className="text-4xl md:text-xl lg:text-4xl">Chatit Ai</p>
+              <div className="w-full h-[70vh] flex flex-col items-center justify-center">
+                <p className="text-4xl md:text-xl lg:text-4xl">Chatit AI</p>
                 <span>Ask anything</span>
+                <div className="h-[50%]">
+                  <img
+                    src="./images/chatit.png"
+                    alt="logo"
+                    className="h-[20%] opacity-25"
+                  />
+                </div>
               </div>
             ) : (
               messages.map((item, index) => (
@@ -107,7 +128,8 @@ const AiMessageBox = () => {
                     <div
                       className={`chat-bubble ${!(item?.name === 'chatit ai') ? 'bg-blue-500 text-white' : darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'} shadow-md `}
                     >
-                      {item?.message}
+                      {/* {item?.message} */}
+                      <BoldText text={item?.message} />
                     </div>
                     <div className="chat-footer"></div>
                   </div>
@@ -131,31 +153,10 @@ const AiMessageBox = () => {
           <div
             className={`h-[10vh] w-full flex justify-center items-center ${darkMode ? 'bg-slate-900' : 'bg-gray-200'}  `}
           >
-            {/* {isPickerVisible && (
-          <div className="absolute bottom-20 md:bottom-32 lg:bottom-20 ">
-            <Picker
-              data={data}
-              previewPosition="none"
-              onEmojiSelect={(e) => {
-                // setCurrentEmoji(e.native);
-                setMessage(message + e.native);
-              }}
-            />
-          </div>
-        )} */}
             <form
               action=""
               className={`w-[90%] md:w-[80%] lg:w-[70%]  flex justify-between items-center ${darkMode ? 'bg-slate-800' : 'bg-white'} rounded-full shadow`}
             >
-              {/* <button
-            className={`${darkMode ? 'bg-slate-700 hover:bg-slate-900 text-white' : 'bg-slate-100 hover:bg-slate-300'} rounded-full  p-2 mx-1`}
-            onClick={() => setPickerVisible(!isPickerVisible)}
-            type="button"
-          >
-            {' '}
-            <MdOutlineEmojiEmotions className="text-2xl" />
-          </button> */}
-
               <div className="w-[90%] ml-0 mr-2 my-2 ">
                 <input
                   type="text"

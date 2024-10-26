@@ -39,7 +39,7 @@ const AllUsers = () => {
         </div>
       )}
       <div
-        className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
+        className={` overflow-y-auto hide_scrollbar px-3 max-h-[73vh] md:max-h-[78vh] lg:max-h-[72vh] ${false ? '' : darkMode ? 'bg-slate-950' : 'bg-slate-100'}`}
         // className={` overflow-y-auto hide_scrollbar px-3 max-h-[74vh] md:max-h-[78vh] lg:max-h-[74vh] ${false ? '' : darkMode ? 'bg-slate-800' : 'bg-slate-100'}`}
         // style={{ maxHeight: 'calc(84vh - 10vh)' }}
       >

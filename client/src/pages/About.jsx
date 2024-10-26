@@ -23,12 +23,11 @@ const About = () => {
                 About Us
               </h2>
               <p className={`text-gray-800s text-sm md:text-base`}>
-                Welcome to Chatit – the ultimate chat platform designed to
-                simplify and enhance your communication experience. Whether
-                you're chatting with friends, collaborating with colleagues, or
-                managing your community, Chatit provides a seamless, secure, and
-                user-friendly interface to keep your conversations flowing
-                effortlessly.
+                Welcome to Chatit – the ultimate platform for seamless, secure
+                communication. Whether you're connecting with friends,
+                collaborating at work, managing a community, or chatting with
+                AI, Chatit offers a user-friendly experience to keep
+                conversations flowing effortlessly.
               </p>
               <NavLink
                 to={'/'}
@@ -38,26 +37,18 @@ const About = () => {
               </NavLink>
             </div>
             <div
-              className={`w-[100%] mt-10 md:mt-0 md:w-[40%] lg:w-[40%] hover:shadow-2xl hover:shadow-slate-400 ${darkMode ? 'bg-slate-950' : 'bg-blue-100'} rounded-full cursor-pointer`}
+              className={`w-[100%] mt-10 md:mt-0 md:w-[40%] lg:w-[40%] shadow-xl  ${darkMode ? 'bg-slate-950 shadow-slate-950 hover:shadow-none' : 'bg-blue-100 hover:shadow-none'} rounded-full cursor-pointer`}
             >
-              <img
-                src="./images/office-meeting-9020936_1280.png"
-                alt="image"
-                className="w-full"
-              />
+              <img src="./images/about1.png" alt="image" className="w-full" />
             </div>
           </div>
           <div
             className={`w-[80%] py-10 bg-whites flex flex-col-reverse md:flex-col lg:flex-row items-center justify-around rounded-lg `}
           >
             <div
-              className={`w-[100%] md:w-[50%] lg:w-[30%] mt-3 md:mt-0 hover:shadow-2xl hover:shadow-slate-400  rounded-full cursor-pointer`}
+              className={`w-[100%] md:w-[50%] lg:w-[30%] mt-3 md:mt-0 shadow-2xl shadow-slate-950 hover:shadow-none rounded-full cursor-pointer`}
             >
-              <img
-                src="./images/ai-generated-8775742_1280.png"
-                alt="image"
-                className="w-full"
-              />
+              <img src="./images/about2.png" alt="image" className="w-full" />
             </div>
             <div className={`md:w-[100%] lg:w-[60%] flex flex-col gap-y-4`}>
               <div>
@@ -86,6 +77,13 @@ const About = () => {
                     <span className={`font-semibold`}>Instant Messaging: </span>
                     <span>
                       Fast and reliable real-time messaging across all devices.
+                    </span>
+                  </li>
+                  <li>
+                    <span className={`font-semibold`}>AI-Powered Chat: </span>
+                    <span>
+                      Enjoy smart, responsive conversations with AI assistance
+                      for tasks and information.
                     </span>
                   </li>
                   <li>
@@ -158,7 +156,7 @@ const About = () => {
             </div>
 
             <div
-              className={`w-[80%] md:w-[50%] lg:w-[25%] mb-5 md:mb-0  md:mt-10 lg:mt-0 lg:my-3  shadow-lg shadow-slate-500 hover:shadow bg-blue-100 rounded-full cursor-pointer`}
+              className={`w-[80%] md:w-[50%] lg:w-[25%] mb-5 md:mb-0  md:mt-10 lg:mt-0 lg:my-3  shadow shadow-slate-500 hover:shadow bg-blue-100 rounded-full cursor-pointer`}
             >
               <img
                 src="./images/Jabed_Ali.jpg"

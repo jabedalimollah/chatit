@@ -241,7 +241,7 @@ const ChangePassword = () => {
             </form>
           </div>
           <div className="w-[100%] md:w-[60%] lg:w-[50%] flex items-center">
-            <img src="/images/man-9031574_1280.png" alt="picture" />
+            <img src="/images/change_password.png" alt="picture" />
           </div>
         </div>
       </div>

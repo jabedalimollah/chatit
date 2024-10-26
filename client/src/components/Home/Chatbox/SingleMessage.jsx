@@ -30,7 +30,6 @@ const SingleMessage = ({ data }) => {
         <div
           className={`chat-bubble ${authUser?._id === data.senderId ? 'bg-blue-500 text-white' : darkMode ? 'bg-slate-800 text-white' : 'bg-white text-black'} shadow-md `}
         >
-          {/* To be on the Council at your age. */}
           {data?.message}
           {/* {message?.message} */}
         </div>
@@ -41,7 +40,7 @@ const SingleMessage = ({ data }) => {
       </div>
       {/* <div className={`chat chat-end`}>
         <div className="chat-bubble bg-blue-500 text-white shadow-md">
-          It's never happened before.
+          Hello
          
         </div>
         <div className="chat-footer">08:50 PM</div>

@@ -55,17 +55,11 @@ const ChatUserProfile = ({ handleHideChatUser }) => {
         <div className="w-full flex flex-col items-center justify-center gap-y-3">
           <div className="w-[80%] flex flex-col ">
             <span className="text-base text-blue-700 font-bold">Name</span>
-            <p className="text-lg font-semibold">
-              {/* Jabed Ali */}
-              {selectedUser?.name}
-            </p>
+            <p className="text-lg font-semibold">{selectedUser?.name}</p>
           </div>
           <div className="w-[80%] flex flex-col ">
             <span className="text-base text-blue-700 font-bold">Username</span>
-            <p className="text-lg font-semibold">
-              @{/* jabedali */}
-              {selectedUser?.username}
-            </p>
+            <p className="text-lg font-semibold">@{selectedUser?.username}</p>
           </div>
           <div className="w-[80%] flex flex-col ">
             <span className="text-base text-blue-700 font-bold">About</span>

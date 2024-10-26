@@ -156,7 +156,7 @@ const DeleteAccount = () => {
             </form>
           </div>
           <div className="w-[100%] md:w-[60%] lg:w-[50%] flex items-center">
-            <img src="/images/website-9022660_1280.png" alt="picture" />
+            <img src="/images/delete_account.png" alt="picture" />
           </div>
         </div>
       </div>

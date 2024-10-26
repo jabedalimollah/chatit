@@ -45,6 +45,7 @@ const MenuComponent = () => {
   const handleLogOutConfirmBtn = () => {
     localStorage.removeItem('chatit');
     localStorage.removeItem('chatit_darkmode');
+    dispatch(setTheme(false));
     navigate('/login');
   };
   useEffect(() => {
@@ -82,9 +83,10 @@ const MenuComponent = () => {
           {/* <BsThreeDotsVertical className="text-2xl" /> */}
           <LuMenu className="text-2xl" />
         </button>
+
         {open && (
           <div
-            className={`w-72 absolute top-11 right-8 md:left-1 lg:left-0 ${darkMode ? 'bg-slate-800 ' : ' bg-white shadow-gray-400'} p-2 shadow-2xl  rounded-md z-50`}
+            className={`w-72 absolute top-11 right-8 md:left-1 lg:left-0 ${darkMode ? 'bg-slate-800 ' : ' bg-white shadow-gray-400'} p-2 shadow-2xl  rounded-md z-50 `}
           >
             <div
               className={`w-full p-4 ${darkMode ? 'border-b-2 border-b-slate-700' : 'border-b-2'}`}
@@ -108,11 +110,9 @@ const MenuComponent = () => {
                 <RiSettings2Line className="text-sm" />
                 My Account
               </li>
-              {/* <li className="hover:bg-gray-200 ">Dark Mode</li> */}
+
               <li>
                 <label
-                  // ref={menuRef}
-                  // onClick={() => setOpen(true)}
                   htmlFor="darkmode"
                   onClick={(e) => e.stopPropagation()}
                   className={`${darkMode ? 'hover:bg-slate-700' : 'hover:bg-gray-100'} flex items-center justify-between text-base px-4 py-2 rounded cursor-pointer`}
@@ -128,10 +128,6 @@ const MenuComponent = () => {
                       darkMode ? '[--tglbg:#126aff]' : '[--tglbg:#d2d2d2]'
                     } hover:bg-white`}
                     checked={darkMode}
-                    // className={`toggle border-blue-500 bg-white ${
-                    //   darkMode ? "[--tglbg:blue]" : "[--tglbg:gray]"
-                    // } hover:bg-white`}
-                    // defaultChecked
                     id="darkmode"
                     onChange={handleDarkMode}
                   />
@@ -171,10 +167,6 @@ const MenuComponent = () => {
                   Jabed Ali Mollah
                 </a>
               </p>
-              {/* <div className="w-[20%]">
-                <img src="./images/logo.png" alt="logo" srcSet="" />
-              </div> */}
-              {/* <p>Chatit</p> */}
             </div>
           </div>
         )}

@@ -10,8 +10,11 @@ const updateUserSchema = z.object({
     .min(2, { message: "name must be at least 2 characters" })
     .max(20, { message: "name must be at maximum 20 characters" })
     .regex(
-      /^[A-Za-z.-]+(\s*[A-Za-z.-]+)*$/,
-      "name must not contain special characters and numbers"
+      /^[a-zA-Z0-9\s]+$/,
+      "name must not contain special characters"
+
+      // /^[A-Za-z.-]+(\s*[A-Za-z.-]+)*$/,
+      // "name must not contain special characters and numbers"
     )
     .optional(),
 

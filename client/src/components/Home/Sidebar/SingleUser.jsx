@@ -60,11 +60,9 @@ const SingleUser = ({ data }) => {
               src={data?.profilePic || './images/default_profile.png'}
               alt="profile"
             />
-            {/* <img src="./images/profile.png" /> */}
-            {/* <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" /> */}
           </div>
         </div>
-        <div className="text-sm">
+        <div className="text-sm w-full truncate">
           <h1>{data?.name}</h1>
 
           {message.length === 0 ? (

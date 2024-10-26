@@ -21,7 +21,7 @@ const Messages = () => {
 
   const getUserMessage = async () => {
     // setLoading(true);
-    // const res = await GetSelectedUserMessages('6708a08103f2615b13f08904');
+
     dispatch(setLoadingMessages(true));
     const res = await GetSelectedUserMessages(selectedUser?._id);
     // setLoading(false)

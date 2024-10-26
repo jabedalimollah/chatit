@@ -14,7 +14,7 @@ const ProfileHeader = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full flex py-2 h-[13vh] relative">
+    <div className="w-full flex py-2 sh-[13vh] h-fit relative">
       {profileBtn ? (
         <Profile />
       ) : (
@@ -53,8 +53,8 @@ const ProfileHeader = () => {
                 className="w-full rounded-full"
               /> */}
             </div>
-            <div className="w-[80%]">
-              <h3>{authUser?.name}</h3>
+            <div className="w-[80%] truncate">
+              <h3 className="truncate">{authUser?.name}</h3>
               {/* <h3>Jabed Ali</h3> */}
               <p
                 className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}

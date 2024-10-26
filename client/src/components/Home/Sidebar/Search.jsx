@@ -41,7 +41,7 @@ const Search = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[6vh] md:h-[4vh] lg:h-[6vh] flex justify-center">
+      <div className="w-full sh-[6vh] h-fit md:h-[4vh] lg:h-[6vh] flex justify-center">
         {/* <h1 className="py-2 font-bold text-blue-600">Chatit</h1> */}
         {/* <form action="" className="mb-2" onSubmit={handleSubmit}> */}
 

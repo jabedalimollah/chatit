@@ -8,12 +8,11 @@ import { setTheme } from './Redux/features/darkTheme/darkThemeSlice';
 import ChangePassword from './pages/ChangePassword';
 import DeleteAccount from './pages/DeleteAccount';
 import About from './pages/About';
+import PageNotFound from './pages/PageNotFound';
 // ================ import pages =====================
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Signup = lazy(() => import('./pages/Signup'));
-// const Chat = lazy(() => import("./pages/Chat"));
-// const Groups = lazy(() => import("./pages/Groups"));
 
 // let user = false;
 function App() {
@@ -51,14 +50,12 @@ function App() {
           <Route path="/change_password" element={<ChangePassword />} />
           <Route path="/delete_account" element={<DeleteAccount />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/chat/:chatId" element={<Chat />} />
-            <Route path="/groups" element={<Groups />} /> */}
         </Route>
         <Route element={<ProtectRoute user={!auth} redirect="/" />}>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Route>
-        <Route path="*" element={<h1>Not found</h1>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

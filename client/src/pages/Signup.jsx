@@ -72,8 +72,8 @@ const Signup = () => {
           </span>
         </div>
       )}
-      <div className="w-full h-auto md:h-dvh flex  items-center justify-center bg-blue-100 mt-12 md:mt-0">
-        <div className="bg-white w-full md:w-10/12 lg:w-6/12 flex flex-col md:flex-row items-center lg:items-start rounded shadow-md ">
+      <div className="w-full h-auto md:h-dvh flex  items-center justify-center bg-blue-100">
+        <div className="bg-white w-full md:w-10/12 lg:w-6/12 pt-12 md:pt-0 flex flex-col md:flex-row items-center lg:items-start rounded shadow-md ">
           {/* ================== Sign Up Input Fields ================== */}
           <div className="p-4 px-8 flex flex-col">
             <h3 className="text-2xl font-bold text-blue-900">

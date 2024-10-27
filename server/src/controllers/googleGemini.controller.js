@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import asyncErrorHandler from "../utils/asyncErrorHandler.js";
-import ApiResponse from "../utils/apiResponse.js";
+import ApiResponse from "../utils/ApiResponse.js";
 const genAI = new GoogleGenerativeAI(process.env.AI_API_KEY);
 const model = genAI.getGenerativeModel({ model: process.env.AI_MODEL });
 

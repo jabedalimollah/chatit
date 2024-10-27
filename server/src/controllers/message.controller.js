@@ -3,7 +3,7 @@ import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 import { User } from "../models/user.model.js";
 import ApiError from "../utils/ApiError.js";
-import ApiResponse from "../utils/apiResponse.js";
+import ApiResponse from "../utils/ApiResponse.js";
 import asyncErrorHandler from "../utils/asyncErrorHandler.js";
 
 const sendMessage = asyncErrorHandler(async (req, res) => {

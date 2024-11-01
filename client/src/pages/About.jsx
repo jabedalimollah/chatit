@@ -7,7 +7,9 @@ const About = () => {
   const darkMode = useSelector((state) => state.darkTheme.value);
   return (
     <>
-      <div className={`w-full ${darkMode ? 'bg-slate-900' : 'bg-slate-100'}`}>
+      <div
+        className={`w-full ${darkMode ? 'bg-slate-900 text-slate-200' : 'bg-slate-100 text-slate-700'}`}
+      >
         <div
           className={`w-full pt-16 md:pt-28 flex flex-col justify-center items-center gap-y-3`}
         >

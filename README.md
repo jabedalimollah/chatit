@@ -144,3 +144,25 @@ If you find this project useful, don't forget to star the repository! ⭐
 
 [![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/JabedAliMollah7)
 
+
+## Screenshots
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20142504.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20142345.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20141313.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20141559.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20141617.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20141717.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20155027.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20155051.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20155108.png?raw=true)
+
+![App Screenshot](https://github.com/jabedalimollah/chatit/blob/main/Screenshots/Screenshot%202024-10-26%20155327.png?raw=true)
